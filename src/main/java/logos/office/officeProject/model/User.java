@@ -17,60 +17,56 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "User")
-
 public class User {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
-	@Column(name = "first_name",nullable = false, length = 80)
+
+	@Column(name = "first_name", nullable = false, length = 80)
 	private String firstName;
-	
-	@Column(name = "last_name",nullable = false, length = 80)
+
+	@Column(name = "last_name", nullable = false, length = 80)
 	private String lastName;
-	
-	@Column (nullable = false, length = 80)
+
+	@Column(nullable = false, length = 80)
 	private int age;
 
-	@Column (nullable = false, unique = true, length = 80)
+	@Column(nullable = false, unique = true, length = 80)
 	private String email;
-	
-	@Column (nullable = false, unique = true, length = 80)
+
+	@Column(nullable = false, unique = true, length = 80)
 	private String password;
-	
-	@OneToMany(cascade={CascadeType.ALL},fetch=FetchType.LAZY,mappedBy="user") 
-	private List<News>news;
-	
-	@OneToMany (cascade={CascadeType.ALL}, fetch=FetchType.LAZY, mappedBy="user")
-	private List<Salary>salaries;	
-	
-//	@OneToMany (cascade={CascadeType.ALL}, fetch=FetchType.LAZY, mappedBy="user")
-//	private List<Message>massage;
-	
-	@ManyToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
-	@JoinTable(name="Event_has_User",joinColumns={@JoinColumn(name="user_id",nullable=false,
-	updatable=false)},inverseJoinColumns={@JoinColumn(name="event_id",nullable=false,updatable=false)})
-	List<User>events;
-	
-	@ManyToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
-	@JoinTable(name="Role_has_User",joinColumns={@JoinColumn(name="user_id",nullable=false,
-	updatable=false)},inverseJoinColumns={@JoinColumn(name="role_id",nullable=false,updatable=false)})
-	List<User>roles;
-	
+
+	@OneToMany(cascade = { CascadeType.ALL }, fetch = FetchType.LAZY, mappedBy = "user")
+	private List<News> news;
+
+	@OneToMany(cascade = { CascadeType.ALL }, fetch = FetchType.LAZY, mappedBy = "user")
+	private List<Salary> salaries;
+
+	// @OneToMany (cascade={CascadeType.ALL}, fetch=FetchType.LAZY,
+	// mappedBy="user")
+	// private List<Message>massage;
+
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(name = "Event_has_User", joinColumns = { @JoinColumn(name = "id_user", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "id_event", nullable = false, updatable = false) })
+	List<Event> events;
+
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(name = "Role_has_User", joinColumns = { @JoinColumn(name = "id_user", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "id_role", nullable = false, updatable = false) })
+	List<Role> roles;
+
 	public User() {
-		}
+	}
 
 	public User(String firstName, String lastName, int age, String email,
 			String password) {
-		
+
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.age = age;
 		this.email = email;
 		this.password = password;
 	}
-	
-	
 
 	public long getId() {
 		return id;
@@ -96,19 +92,19 @@ public class User {
 		this.salaries = salaries;
 	}
 
-	public List<User> getEvents() {
+	public List<Event> getEvents() {
 		return events;
 	}
 
-	public void setEvents(List<User> events) {
+	public void setEvents(List<Event> events) {
 		this.events = events;
 	}
 
-	public List<User> getRoles() {
+	public List<Role> getRoles() {
 		return roles;
 	}
 
-	public void setRoles(List<User> roles) {
+	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
 
@@ -237,63 +233,61 @@ public class User {
 				+ salaries + ", events=" + events + ", roles=" + roles + "]";
 	}
 
-	
-	
-//	@Override
-//	public int hashCode() {
-//		final int prime = 31;
-//		int result = 1;
-//		result = prime * result + age;
-//		result = prime * result + ((email == null) ? 0 : email.hashCode());
-//		result = prime * result
-//				
-//				+ ((firstName == null) ? 0 : firstName.hashCode());
-//		result = prime * result
-//				+ ((lastName == null) ? 0 : lastName.hashCode());
-//		result = prime * result
-//				+ ((password == null) ? 0 : password.hashCode());
-//		return result;
-//	}
-//
-//	@Override
-//	public boolean equals(Object obj) {
-//		if (this == obj)
-//			return true;
-//		if (obj == null)
-//			return false;
-//		if (getClass() != obj.getClass())
-//			return false;
-//		User other = (User) obj;
-//		if (age != other.age)
-//			return false;
-//		if (email == null) {
-//			if (other.email != null)
-//				return false;
-//		} else if (!email.equals(other.email))
-//			return false;
-//		if (firstName == null) {
-//			if (other.firstName != null)
-//				return false;
-//		} else if (!firstName.equals(other.firstName))
-//			return false;
-//		if (lastName == null) {
-//			if (other.lastName != null)
-//				return false;
-//		} else if (!lastName.equals(other.lastName))
-//			return false;
-//		if (password == null) {
-//			if (other.password != null)
-//				return false;
-//		} else if (!password.equals(other.password))
-//			return false;
-//		return true;
-//	}
-//	
-//	@Override
-//	public String toString() {
-//		return "User [firstName=" + firstName + ", lastName=" + lastName
-//				+ ", age=" + age + ", email=" + email + ", password="
-//				+ password + "]";
-//	}
-//	
+	// @Override
+	// public int hashCode() {
+	// final int prime = 31;
+	// int result = 1;
+	// result = prime * result + age;
+	// result = prime * result + ((email == null) ? 0 : email.hashCode());
+	// result = prime * result
+	//
+	// + ((firstName == null) ? 0 : firstName.hashCode());
+	// result = prime * result
+	// + ((lastName == null) ? 0 : lastName.hashCode());
+	// result = prime * result
+	// + ((password == null) ? 0 : password.hashCode());
+	// return result;
+	// }
+	//
+	// @Override
+	// public boolean equals(Object obj) {
+	// if (this == obj)
+	// return true;
+	// if (obj == null)
+	// return false;
+	// if (getClass() != obj.getClass())
+	// return false;
+	// User other = (User) obj;
+	// if (age != other.age)
+	// return false;
+	// if (email == null) {
+	// if (other.email != null)
+	// return false;
+	// } else if (!email.equals(other.email))
+	// return false;
+	// if (firstName == null) {
+	// if (other.firstName != null)
+	// return false;
+	// } else if (!firstName.equals(other.firstName))
+	// return false;
+	// if (lastName == null) {
+	// if (other.lastName != null)
+	// return false;
+	// } else if (!lastName.equals(other.lastName))
+	// return false;
+	// if (password == null) {
+	// if (other.password != null)
+	// return false;
+	// } else if (!password.equals(other.password))
+	// return false;
+	// return true;
+	// }
+	//
+	// @Override
+	// public String toString() {
+	// return "User [firstName=" + firstName + ", lastName=" + lastName
+	// + ", age=" + age + ", email=" + email + ", password="
+	// + password + "]";
+	// }
+	//
 }

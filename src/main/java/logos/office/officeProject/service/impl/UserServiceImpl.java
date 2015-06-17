@@ -1,25 +1,55 @@
 package logos.office.officeProject.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
+import logos.office.officeProject.dao.RateDAO;
 import logos.office.officeProject.dao.UserDao;
+import logos.office.officeProject.dto.UserDTO;
+import logos.office.officeProject.model.Rate;
+import logos.office.officeProject.model.Role;
 import logos.office.officeProject.model.User;
 import logos.office.officeProject.service.UserService;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UserServiceImpl implements UserService {// по зразку
 
 	@Inject
 	private UserDao userDao;
+	@Inject
+	private RateDAO rateDao;
 
 	@Transactional
-	public List<User> getAllUsers() {
-		return userDao.getAllElements();
+	public List<UserDTO> getAllUsers() {
+		List<UserDTO> dtos = new ArrayList<>();
+
+		for (User user : userDao.getAllElements()) {
+
+			List<String> roles = new ArrayList<>();
+			Integer rateVal = 0;
+			for (Role role : user.getRoles()) {
+				roles.add(role.getName());
+
+				Rate rate = rateDao.findRateByUserRole(role);
+
+				if (rate != null) {
+					rateVal = rate.getValue();
+				}
+
+			}
+
+			dtos.add(new UserDTO(
+					user.getFirstName() + " " + user.getLastName(), user
+							.getAge(), user.getEmail(), roles, rateVal));
+
+		}
+
+		return dtos;
 	}
 
 	@Transactional

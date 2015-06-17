@@ -17,7 +17,6 @@ public class SalaryDAOImpl extends ElementDAOImpl<Salary> implements SalaryDAO {
 
 	public SalaryDAOImpl() {
 		super(Salary.class);
-
 	}
 
 	@SuppressWarnings("unchecked")

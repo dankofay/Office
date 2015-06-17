@@ -4,17 +4,21 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 
-<table>
-	<tr>		
+<table class="table table-striped">
+	<tr>
 		<th>Name</th>
-		<th>aGE</th>
+		<th>Age</th>
 		<th>Email</th>
+		<th>Roles</th>
+		<th>Rate</th>
 	</tr>
-	<c:forEach items="${users}" var="user">
-		<tr>			
-            <td>${user.firstName} ${user.lastName }</td>
-             <td>${user.age}</td>
+	<c:forEach items="${usersList}" var="user">
+		<tr>
+			<td>${user.fullName }</td>
+			<td>${user.age}</td>
 			<td><a href="users/email/${user.email}">${user.email }</a></td>
+			<td><c:forEach items="${user.roles}" var="role">${role } </c:forEach></td>
+			<td>${user.rateValue}</td>
 		</tr>
 	</c:forEach>
 </table>
