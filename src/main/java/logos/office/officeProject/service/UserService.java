@@ -3,6 +3,7 @@ package logos.office.officeProject.service;
 
 import java.util.List;
 
+import logos.office.officeProject.dto.UserDTO;
 import logos.office.officeProject.model.User;
 
 
@@ -10,7 +11,7 @@ import logos.office.officeProject.model.User;
 public interface UserService {
 	
 	
-	List<User> getAllUsers();
+	List<UserDTO> getAllUsers();
 	 
     User getUserInfo(long userId);
 	
