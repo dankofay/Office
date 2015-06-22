@@ -34,12 +34,5 @@
 		<put-attribute name="title" value="Event" />
 		<put-attribute name="main_content" value="/WEB-INF/views/event/event.jsp" />
 	</definition>
-	<definition name="schedule" extends="event">
-		<put-attribute name="title" value="Schedule" />
-		<put-attribute name="main_content" value="/WEB-INF/views/schedule/schedule.jsp" />
-	</definition>
-	<definition name="type" extends="event">
-		<put-attribute name="title" value="Type" />
-		<put-attribute name="main_content" value="/WEB-INF/views/type/type.jsp" />
-	</definition>
+	
 </tiles-definitions>
