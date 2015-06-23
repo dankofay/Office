@@ -3,6 +3,7 @@ package logos.office.officeProject.service;
 import java.sql.Date;
 import java.util.List;
 
+import logos.office.officeProject.dto.EventDTO;
 import logos.office.officeProject.model.Event;
 
 public interface EventService {
@@ -10,4 +11,5 @@ public interface EventService {
 	 List<Event> findEventsByTypePersonl(boolean isPersonal);
 	 List<Event> findEventsByTypeDate(Date date);
 	 List<Event> getAllEvents();
+	 List<EventDTO> getAllEventsByIdUser(Long id_user);
 }

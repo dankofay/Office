@@ -4,4 +4,6 @@ import logos.office.officeProject.model.Type;
 
 public interface TypeDao extends ElementDAO<Type>{
 
+	
+	
 }

@@ -25,6 +25,20 @@ public class UserServiceImpl implements UserService {// по зразку
 	private RateDAO rateDao;
 
 	@Transactional
+	public Long idUserByEmail(String email){
+		long id=0;
+		for (User u : userDao.getAllElements()) {
+			if(u.getEmail().equals(email)){
+				id=u.getId();
+				return id;
+			}
+		}
+		return id;	
+	}
+	
+	
+	
+	@Transactional
 	public List<UserDTO> getAllUsers() {
 		List<UserDTO> dtos = new ArrayList<>();
 

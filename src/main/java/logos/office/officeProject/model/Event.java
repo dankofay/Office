@@ -112,11 +112,11 @@ public class Event {
 		this.schedule = schedule;
 	}
 
-	public boolean isConfirmed() {
+	public boolean isConfirmed2() {
 		return isConfirmed;
 	}
 
-	public void setConfirmed(boolean isConfirmed) {
+	public void setConfirmed2(boolean isConfirmed) {
 		this.isConfirmed = isConfirmed;
 	}
 
