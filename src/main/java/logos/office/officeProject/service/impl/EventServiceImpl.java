@@ -32,8 +32,10 @@ public class EventServiceImpl implements EventService {
 	private ScheduleDao scheduleDao;
 	
 	@Transactional
-	public List<EventDTO> getAllEventsByIdUser(Long id_user){
+	public List<EventDTO> getAllEventsByIdUser(String email){
 		List<EventDTO>edto=new ArrayList<>();
+		UserServiceImpl us=new UserServiceImpl();
+		Long id_user=us.idUserByEmail(email);
 		for (Event ek : eventDao.getAllElements()) {
 			Iterator<User>iter=ek.getUsers().iterator();
 			while(iter.hasNext()){
