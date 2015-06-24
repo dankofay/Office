@@ -28,10 +28,9 @@ public class Schedule {
 	@OneToMany(cascade = { CascadeType.ALL }, fetch = FetchType.LAZY, mappedBy = "schedule")
 	private List<Event> events;
 
-	public Schedule( Date date, List<Event> events) {
+	public Schedule( Date date) {
 		
 		this.date = date;
-		this.events = events;
 	}
 
 	
@@ -44,7 +43,7 @@ public class Schedule {
 
 	@Override
 	public String toString() {
-		return "Schedule [date=" + date + ", events=" + events + "]";
+		return "date=" + date;
 	}
 
 	public Long getId() {

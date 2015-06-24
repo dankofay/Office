@@ -12,14 +12,15 @@ public class EventDTO {
 	private Date date;
 	private Time timeFrom;
 	private Time duraction;
-	public EventDTO(String type, Date date2, Time time,
-			Time time2) {
-		
+	private boolean isConfirmed;
+	
+	
+	public EventDTO(String type, Date date, Time timeFrom, Time duraction,boolean isConfirmed) {
 		this.type = type;
-		this.date = date2;
-		this.timeFrom = time;
-		this.duraction = time2;
-
+		this.date = date;
+		this.timeFrom = timeFrom;
+		this.duraction = duraction;
+		this.isConfirmed = isConfirmed;
 	}
 	public String getType() {
 		return type;
@@ -44,6 +45,13 @@ public class EventDTO {
 	}
 	public void setDuraction(Time duraction) {
 		this.duraction = duraction;
+	}
+	
+	public boolean isConfirmed2() {
+		return isConfirmed;
+	}
+	public void setConfirmed2(boolean isConfirmed) {
+		this.isConfirmed = isConfirmed;
 	}
 	
 	

@@ -34,11 +34,11 @@ public class Type {
 	
 	}
 
-	public Type(String nameType, boolean isPersonal, List<Event> evets) {
-		
+	public Type(String nameType, boolean isPersonal) {
+
 		this.nameType = nameType;
 		this.isPersonal = isPersonal;
-		this.events = evets;
+		
 	}
 
 	public Long getId() {

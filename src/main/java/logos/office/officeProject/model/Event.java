@@ -60,10 +60,10 @@ public class Event {
 
 	
 	
-	public Event(Long id, Time timeFrom, Time duration, Type type,
-			Schedule schedule, boolean isConfirmed, List<User> users) {
-		super();
-		this.id = id;
+	
+
+	public Event(Time timeFrom, Time duration, Type type, Schedule schedule,
+			boolean isConfirmed, List<User> users) {
 		this.timeFrom = timeFrom;
 		this.duration = duration;
 		this.type = type;
