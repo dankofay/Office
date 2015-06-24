@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import logos.office.officeProject.dao.EventDao;
 import logos.office.officeProject.dao.ScheduleDao;
 import logos.office.officeProject.dao.TypeDao;
+import logos.office.officeProject.dao.UserDao;
 import logos.office.officeProject.dto.EventDTO;
 import logos.office.officeProject.model.Event;
 import logos.office.officeProject.model.Schedule;
@@ -26,15 +27,16 @@ public class EventServiceImpl implements EventService {
 	@Inject
 	private EventDao eventDao;
 
-//	@Inject
-//	private TypeDao typeDao;  //чого воно випендрюється в мене тут?
+	@Inject
+	private TypeDao typeDao;  //чого воно випендрюється в мене тут?
 
 	@Inject
 	private ScheduleDao scheduleDao;
-
+@Inject
+private UserDao userDao;
 	
 	@Transactional//  по запиту юзера видати йому всі події в яких він приймав чи приймає участь..  тобто шоб запит йшов по його милу
-	public List<EventDTO> getAllEventsByIdUser(String email) {
+	public List<EventDTO> getAllEventsByIdEmail(String email) {
 		List<EventDTO> edto = new ArrayList<>();
 		UserServiceImpl us = new UserServiceImpl();
 		Long id_user = us.idUserByEmail(email);
@@ -63,36 +65,19 @@ public class EventServiceImpl implements EventService {
 		list.add(user);  
 		eventDao.addElement(new Event(timeFrom, duration, new Type("Personal Break", true),new Schedule(date), false,list));
 	}
+	@Transactional
+	public void addAllUsersToEvent(Date date,String nameType){
+		List<User>list=new ArrayList<User>();
+		for (User user : userDao.getAllElements()) {
+			list.add(user);
+		}
+		for (Event ev : eventDao.getAllElements()) {
+			if(ev.getSchedule().getDate().equals(date) && ev.getType().getNameType().equalsIgnoreCase(nameType)){
+				ev.getUsers().addAll(list);
+			}
+		}
+		
+	}
 	
 	
-	
-	@Transactional
-	public List<Event> getAllEvents() {
-		return eventDao.getAllElements();
-
-	}
-
-	@Transactional
-	public List<Event> findEventsByTypeName(String typeName) {
-		return eventDao.findEventsByTypeName(typeName);
-
-	}
-
-	@Transactional
-	public List<Event> findEventsByTypePersonl(boolean isPersonal) {
-		return eventDao.findEventsByTypePersonl(isPersonal);
-	}
-
-	@Transactional
-	public List<Event> findEventsByTypeDate(Date date) {
-
-		return eventDao.findEventsByTypeDate(date);
-	}
-
-	@Override
-	public List<EventDTO> getAllEventsByIdUser(Long id_user) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }
