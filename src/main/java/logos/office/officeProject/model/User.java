@@ -20,7 +20,7 @@ import javax.persistence.Table;
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 
 	@Column(name = "first_name", nullable = false, length = 80)
 	private String firstName;
@@ -29,7 +29,7 @@ public class User {
 	private String lastName;
 
 	@Column(nullable = false, length = 80)
-	private int age;
+	private Integer age;
 
 	@Column(nullable = false, unique = true, length = 80)
 	private String email;
@@ -68,11 +68,11 @@ public class User {
 		this.password = password;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -124,11 +124,11 @@ public class User {
 		this.lastName = lastName;
 	}
 
-	public int getAge() {
+	public Integer getAge() {
 		return age;
 	}
 
-	public void setAge(int age) {
+	public void setAge(Integer age) {
 		this.age = age;
 	}
 
