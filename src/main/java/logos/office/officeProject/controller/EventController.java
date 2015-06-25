@@ -39,24 +39,11 @@ public class EventController {
 		return "events";
 	}
 	
-	@RequestMapping(value="{/getEventsByTypePersonal}",method = RequestMethod.GET)
-	public String getEventsByTypePersonal(Model model, @PathVariable boolean isPersonal){
-		List<Event>events=eventService.findEventsByTypePersonl(isPersonal);
-		model.addAttribute("isPersonal", events);
-		
-		return "events";
-	}
+	
 		
 	
 	
-	@RequestMapping(value="{/getEventsByTypeDate}",method = RequestMethod.GET)
-	public String getEventsByTypeDate(Model model, @PathVariable Date date){
-		List<Event>events=eventService.findEventsByTypeDate(date);
-		model.addAttribute("Date", events);
-		return "events";
-		
-		
-	}
+	
 	
 	
 }

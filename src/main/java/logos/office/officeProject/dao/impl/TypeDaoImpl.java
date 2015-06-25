@@ -1,5 +1,7 @@
 package logos.office.officeProject.dao.impl;
 
+import javax.persistence.NoResultException;
+
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 

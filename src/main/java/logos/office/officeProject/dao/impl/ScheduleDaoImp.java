@@ -4,6 +4,8 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.NoResultException;
+
 import org.springframework.stereotype.Repository;
 
 import logos.office.officeProject.dao.ScheduleDao;
@@ -20,9 +22,9 @@ public class ScheduleDaoImp extends ElementDAOImpl<Schedule> implements Schedule
 	}
 
 	@SuppressWarnings("unchecked")
-	public Schedule findDateByDate(Date date) {
+	public Schedule findScheduleByDate(Date date) {
 		try {
-	           return entityManager.createQuery("From Schedule s Where s.date =:date")
+	           return (Schedule) entityManager.createQuery("From Schedule s Where s.date =:date")
 	        		   .setParameter("date", date).getResultList();
 	           
 	        } catch(NoResultException e) {
