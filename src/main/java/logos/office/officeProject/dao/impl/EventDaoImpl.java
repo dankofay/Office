@@ -51,20 +51,4 @@ public class EventDaoImpl extends ElementDAOImpl<Event> implements EventDao {
 		
 	}
 	
-	
-	
-	
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Event> findEventsByTypeDate(Date date) {
-		try {
-	           return entityManager.createQuery("From Event e Where e.schedule.date =:date")
-	        		   .setParameter("date", date).getResultList();
-	           
-	        } catch(NoResultException e) {
-	            return new ArrayList<>();
-	        }
-	}
-	
 }

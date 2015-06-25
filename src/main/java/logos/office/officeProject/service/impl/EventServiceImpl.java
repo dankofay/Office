@@ -28,56 +28,105 @@ public class EventServiceImpl implements EventService {
 	private EventDao eventDao;
 
 	@Inject
-	private TypeDao typeDao;  //чого воно випендрюється в мене тут?
+	private TypeDao typeDao; // чого воно випендрюється в мене тут?
 
 	@Inject
 	private ScheduleDao scheduleDao;
-@Inject
-private UserDao userDao;
+
+	@Inject
+	private UserDao userDao;
 	
-	@Transactional//  по запиту юзера видати йому всі події в яких він приймав чи приймає участь..  тобто шоб запит йшов по його милу
-	public List<EventDTO> getAllEventsByIdEmail(String email) {
+	@Inject
+	UserServiceImpl usSerImpl;
+
+	@Transactional
+	public List<EventDTO> getAllEventsById(Long id_user) {
 		List<EventDTO> edto = new ArrayList<>();
-		UserServiceImpl us = new UserServiceImpl();
-		Long id_user = us.idUserByEmail(email);
+
 		for (Event ek : eventDao.getAllElements()) {
 			Iterator<User> iter = ek.getUsers().iterator();
 			while (iter.hasNext()) {
 				User i = iter.next();
 				if (i.getId() == id_user) {
-					edto.add(new EventDTO(ek.getType().getNameType(),ek.getSchedule().getDate(), ek.getTimeFrom(),
-							ek.getDuration(), ek.isConfirmed2()));
+					edto.add(new EventDTO(ek.getType().getNameType(), ek
+							.getSchedule().getDate(), ek.getTimeFrom(), ek
+							.getDuration(), ek.isConfirmed2()));
 				}
 			}
-		}return edto;
+		}
+		return edto;
 
 	}
-	@Transactional// можна додати подію
-	public void saveEvent(Time timeFrom,Time duration,String nameType,boolean isPersonal,Date date,
-			boolean isConfirmed){
-		eventDao.addElement(new Event(timeFrom, duration, new Type(nameType, isPersonal),new Schedule(date), isConfirmed, new ArrayList<User>()));
-	}
-	@Transactional// запит на персональну перерву///   як в дюрекшен поставити іксований час?тобто шоб перерва тривала годин часу
-	public void addPersonalBreak(Time timeFrom,Time duration,Date date,String email){
-		UserServiceImpl userImpl=new UserServiceImpl();
-		User user=userImpl.getUserInfoByEmail(email);
-		List<User>list=new ArrayList<User>();
-		list.add(user);  
-		eventDao.addElement(new Event(timeFrom, duration, new Type("Personal Break", true),new Schedule(date), false,list));
-	}
+
 	@Transactional
-	public void addAllUsersToEvent(Date date,String nameType){
-		List<User>list=new ArrayList<User>();
-		for (User user : userDao.getAllElements()) {
-			list.add(user);
+	// можна додати подію
+	public void saveEvent(Time timeFrom, Time duration, Long typeId, Date date) {
+
+		Type type = typeDao.getElementByID(typeId);
+		scheduleDao.addElement(new Schedule(date));;
+		Schedule schedule = scheduleDao.findScheduleByDate(date);
+
+		eventDao.addElement(new Event(timeFrom, duration, type, schedule,
+				false, new ArrayList<User>()));
+	}
+
+	@Transactional
+	// запит на персональну перерву/// як в дюрекшен поставити іксований
+	// час?тобто шоб перерва тривала годин часу
+	public void addPersonalBreak(Time timeFrom, Time duration, Date date,
+			Long userId) {
+		Type type = typeDao.getElementByID((long) 1);
+		User user = usSerImpl.getUserInfo(userId);
+		List<User> list = new ArrayList<User>();
+		list.add(user);
+		eventDao.addElement(new Event(timeFrom, duration, type, new Schedule(
+				date), false, list));
+	}
+
+	@Transactional
+	public void addAllUsersToEvent(Date date, String nameType) {
+		List<User> list = new ArrayList<User>();
+		for (User u : userDao.getAllElements()) {
+			list.add(u);
 		}
 		for (Event ev : eventDao.getAllElements()) {
-			if(ev.getSchedule().getDate().equals(date) && ev.getType().getNameType().equalsIgnoreCase(nameType)){
+			if (ev.getSchedule().getDate().equals(date)
+					&& ev.getType().getNameType().equalsIgnoreCase(nameType)) {
 				ev.getUsers().addAll(list);
 			}
 		}
-		
+
 	}
 	
+	@Transactional// додати юзера до події
+	public void addUsersToEvent(Date date, String nameType,Long idUser) {
+		List<User> list = new ArrayList<User>();
+		for (User u : userDao.getAllElements()) {
+			if(u.getId()==idUser){
+			list.add(u);}
+		}
+		for (Event ev : eventDao.getAllElements()) {
+			if (ev.getSchedule().getDate().equals(date)
+					&& ev.getType().getNameType().equalsIgnoreCase(nameType)) {
+				ev.getUsers().addAll(list);
+			}
+		}
+
+	}
+
+	@Transactional
+	@Override
+	public List<Event> findEventsByTypeName(String typeName) {
+
+		return eventDao.findEventsByTypeName(typeName);
+	}
+
 	
+	@Transactional
+	@Override
+	public List<Event> getAllEvents() {
+
+		return eventDao.getAllElements();
+	}
+
 }

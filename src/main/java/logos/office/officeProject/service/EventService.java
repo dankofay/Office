@@ -9,12 +9,11 @@ import logos.office.officeProject.model.Event;
 
 public interface EventService {
 	 List<Event> findEventsByTypeName(String typeName);
-	 List<Event> findEventsByTypePersonl(boolean isPersonal);
-	 List<Event> findEventsByTypeDate(Date date);
 	 List<Event> getAllEvents();
-	 List<EventDTO> getAllEventsByIdEmail(String email);
-	 void saveEvent(Time timeFrom,Time duration,String nameType,boolean isPersonal,Date date,
-				boolean isConfirmed);
-	 void addPersonalBreak(Time timeFrom,Time duration,Date date,String email);
-	 void addAllUsersToEvent(Date date,String nameType);
+	 void addAllUsersToEvent(Date date, String nameType);
+	 void addPersonalBreak(Time timeFrom, Time duration, Date date,
+				Long userId);
+	 void saveEvent(Time timeFrom, Time duration, Long typeId, Date date);
+	 void addUsersToEvent(Date date, String nameType,Long idUser);
+	 List<EventDTO> getAllEventsById(Long id_user);
 }

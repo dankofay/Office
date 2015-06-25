@@ -9,5 +9,5 @@ public interface EventDao extends ElementDAO<Event>{
 
 	List<Event> findEventsByTypeName(String typeName);
 	List<Event> findEventsByTypePersonl(boolean isPersonal);
-	List<Event> findEventsByTypeDate(Date date);
+	
 }
