@@ -36,17 +36,17 @@ public class SalaryController {
 		return "salary";
 	}
 
-//	@RequestMapping(value = "/find?dateFrom={from}&dateTo={to}&userId={userId}", method = RequestMethod.GET)
-//	// оепеохрюрх!!!!
-//	public String getSalaryByDuration(Model model,
-//			@PathVariable(value = "userId") long id,
-//			@PathVariable(value = "from") String from,
-//			@PathVariable(value = "to") String to) {
-//		System.err.println(id + " " + from + " " + to);
-//		model.addAttribute("byDuration",
-//				salaryService.findSalaryByUserByTimeDuration(id, from, to));
-//		return "salary";
-//	}
+	@RequestMapping(value = "/find?dateFrom={from}&dateTo={to}&userId={userId}", method = RequestMethod.GET)
+	// оепеохрюрх!!!!
+	public String getSalaryByDuration(Model model,
+			@PathVariable(value = "userId") long id,
+			@PathVariable(value = "from") String from,
+			@PathVariable(value = "to") String to) {
+		System.err.println(id + " " + from + " " + to);
+		model.addAttribute("byDuration",
+				salaryService.findSalaryByUserByTimeDuration(id, from, to));
+		return "salary";
+	}
 
 	// оепеохрюрх!!!!
 		//@RequestMapping(value = "/create?dateFrom={from}&dateTo={to}&userId={userId}", method = RequestMethod.POST)

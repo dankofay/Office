@@ -48,7 +48,7 @@ public class SalaryServiceImpl implements SalaryService {
 	private RateDAO rateDao;
 
 	private Integer actualHours;
-	private static final Integer workingHours = 160;// static final Integer
+	private static final Integer workingHours = 160;
 
 	@Transactional
 	public List<Salary> findSalaryByUserId(long id) {
@@ -102,10 +102,7 @@ public class SalaryServiceImpl implements SalaryService {
 						&& event.isConfirmed2()
 						&& event.getType().getEvets()
 								.contains("Personal Break")) {
-
-					actualHours = actualHours - 1;// Duration
-													// â
-													// Integer
+					actualHours = actualHours - 1;// Duration â Integer
 					Integer rateVal;
 					List<String> roles = new ArrayList<>();
 					for (Role role : user.getRoles()) {
@@ -120,7 +117,6 @@ public class SalaryServiceImpl implements SalaryService {
 										+ " " + user.getLastName()), salarySum,
 										roles));
 							}
-					
 						}
 					}
 				}

@@ -14,5 +14,5 @@ public interface SalaryService {
 
 	List<Salary> findSalaryByUserByTimeDuration(long id, String from, String to);
 
-	//List<SalaryDTO> createSalary(long userId, Date from, Date to);
+	List<SalaryDTO> createSalary(long userId, Date from, Date to);
 }
