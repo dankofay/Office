@@ -25,7 +25,6 @@ public class Rate {
 	private Role role;///?????????? і шо вконструктор передававти
 
 	public Rate() {
-
 	}
 
 	public Rate(Integer value, Role role) {

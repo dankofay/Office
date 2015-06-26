@@ -1,5 +1,6 @@
 package logos.office.officeProject.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -46,5 +47,17 @@ public class SalaryController {
 				salaryService.findSalaryByUserByTimeDuration(id, from, to));
 		return "salary";
 	}
-	// /////////////ŸÂ ‰Ó‰‡ÚË ÏÂÚÓ‰Ë
+
+	// œ≈–≈œ»“¿“»!!!!
+		//@RequestMapping(value = "/create?dateFrom={from}&dateTo={to}&userId={userId}", method = RequestMethod.POST)
+		// œ≈–≈œ»“¿“»!!!!
+//		public String createSalary(Model model,
+//				@PathVariable(value = "userId") long id,
+//				@PathVariable(value = "from") Date from,
+//				@PathVariable(value = "to") Date to) {
+//			System.err.println(id + " " + from + " " + to);
+//			model.addAttribute("CreateSalary",
+//					salaryService.createSalary(id, from, to));
+//			return "salary";
+//		}
 }

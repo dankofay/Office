@@ -1,8 +1,25 @@
-INSERT INTO `Role` (`id`,`name`) VALUES (1,"Administrator"),(2,"Manager"),(3,"Developer"),(4,"Accountant"),(5,"Newsmaker"),(6,"Developer");
+INSERT INTO Role (id,name) VALUES (1,"Accauntant"),(2,"System Administrator"),(3,"NewsMaker"),(4,"Office Manager"),(5,"Developer"),(6,"Manager"),(7,"Manager"),(8,"Tech Support"),(9,"Manager"),(10,"Developer");
+INSERT INTO Role (id,name) VALUES (11,"Tech Support"),(12,"Developer"),(13,"Developer"),(14,"Tech Support"),(15,"Manager"),(16,"Manager"),(17,"Tech Support"),(18,"Tech Support"),(19,"Manager"),(20,"Developer");
+INSERT INTO Role (id,name) VALUES (21,"Developer"),(22,"Developer"),(23,"Tech Support"),(24,"Tech Support"),(25,"Developer"),(26,"Tech Support"),(27,"Manager"),(28,"Manager"),(29,"Developer"),(30,"Manager");
+INSERT INTO Role (id,name) VALUES (31,"Manager"),(32,"Developer"),(33,"Manager"),(34,"Manager"),(35,"Manager"),(36,"Manager"),(37,"Manager"),(38,"Developer"),(39,"Manager"),(40,"Manager");
+INSERT INTO Role (id,name) VALUES (41,"Developer"),(42,"Manager"),(43,"Tech Support"),(44,"Developer"),(45,"Developer"),(46,"Developer"),(47,"Manager"),(48,"Tech Support"),(49,"Developer"),(50,"Developer");
+INSERT INTO Role (id,name) VALUES (51,"Manager"),(52,"Manager"),(53,"Developer"),(54,"Manager"),(55,"Tech Support"),(56,"Developer"),(57,"Tech Support"),(58,"Developer"),(59,"Tech Support"),(60,"Developer");
+INSERT INTO Role (id,name) VALUES (61,"Tech Support"),(62,"Manager"),(63,"Manager"),(64,"Manager"),(65,"Manager"),(66,"Developer"),(67,"Manager"),(68,"Tech Support"),(69,"Tech Support"),(70,"Tech Support");
+INSERT INTO Role (id,name) VALUES (71,"Manager"),(72,"Manager"),(73,"Manager"),(74,"Manager"),(75,"Developer"),(76,"Tech Support"),(77,"Manager"),(78,"Manager"),(79,"Tech Support"),(80,"Developer");
+INSERT INTO Role (id,name) VALUES (81,"Developer"),(82,"Developer"),(83,"Tech Support"),(84,"Manager"),(85,"Tech Support"),(86,"Manager"),(87,"Tech Support"),(88,"Manager"),(89,"Developer"),(90,"Tech Support");
+INSERT INTO Role (id,name) VALUES (91,"Manager"),(92,"Manager"),(93,"Tech Support"),(94,"Manager"),(95,"Tech Support"),(96,"Tech Support"),(97,"Tech Support"),(98,"Developer"),(99,"Tech Support"),(100,"Tech Support");
 
-
-INSERT INTO `office`.`role_has_user` (`id_user`, `id_role`) VALUES ('1', '2');
-INSERT INTO `office`.`role_has_user` (`id_user`, `id_role`) VALUES ('1', '3');
-INSERT INTO `office`.`role_has_user` (`id_user`, `id_role`) VALUES ('2', '3');
+INSERT INTO `office`.`role_has_user` (`id_user`, `id_role`) VALUES ('1', '1');
+INSERT INTO `office`.`role_has_user` (`id_user`, `id_role`) VALUES ('2', '2');
 INSERT INTO `office`.`role_has_user` (`id_user`, `id_role`) VALUES ('3', '3');
 INSERT INTO `office`.`role_has_user` (`id_user`, `id_role`) VALUES ('4', '4');
+INSERT INTO `office`.`role_has_user` (`id_user`, `id_role`) VALUES ('5','5'),('6','6'),('7','7'),('8','8'),('9','9'),('10','10'),('11','11'),('12','12'),('13','13'),('14','14');
+INSERT INTO `office`.`role_has_user` (`id_user`, `id_role`) VALUES ('15','15'),('16','16'),('17','17'),('18','18'),('19','19'),('20','20'),('21','21'),('22','22'),('23','23'),('24','24');
+INSERT INTO `office`.`role_has_user` (`id_user`, `id_role`) VALUES ('25','25'),('26','26'),('27','27'),('28','28'),('29','29'),('30','30'),('31','31'),('32','32'),('33','33'),('34','34');
+INSERT INTO `office`.`role_has_user` (`id_user`, `id_role`) VALUES ('35','35'),('36','36'),('37','37'),('38','38'),('39','39'),('40','40'),('41','41'),('42','42'),('43','43'),('44','44');
+INSERT INTO `office`.`role_has_user` (`id_user`, `id_role`) VALUES ('45','45'),('46','46'),('47','37'),('48','38'),('49','49'),('50','50'),('51','51'),('52','52'),('53','53'),('54','54');
+INSERT INTO `office`.`role_has_user` (`id_user`, `id_role`) VALUES ('55','55'),('56','36'),('57','37'),('58','58'),('59','59'),('60','60'),('61','61'),('62','42'),('63','63'),('64','64');
+INSERT INTO `office`.`role_has_user` (`id_user`, `id_role`) VALUES ('65','65'),('66','66'),('67','67'),('68','68'),('69','69'),('70','70'),('71','41'),('72','72'),('73','73'),('74','74');
+INSERT INTO `office`.`role_has_user` (`id_user`, `id_role`) VALUES ('75','75'),('76','76'),('77','77'),('78','78'),('79','79'),('80','80'),('81','81'),('82','82'),('83','83'),('84','84');
+INSERT INTO `office`.`role_has_user` (`id_user`, `id_role`) VALUES ('85','85'),('86','86'),('87','87'),('88','88'),('89','89'),('90','40'),('91','91'),('92','42'),('93','93'),('94','94');
+INSERT INTO `office`.`role_has_user` (`id_user`, `id_role`) VALUES ('95','35'),('96','96'),('97','97'),('98','98'),('99','99'),('100','100');
