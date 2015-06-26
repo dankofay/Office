@@ -9,7 +9,6 @@
 	
 	<http auto-config="true">
 		<intercept-url pattern="/secure/**" access="ROLE_USER" />
-		<intercept-url pattern="/admin/**" access="ROLE_ADMIN" />
 	</http>	
 
 	<beans:bean id="userDetailsService"
