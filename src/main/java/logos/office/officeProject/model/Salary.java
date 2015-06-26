@@ -20,7 +20,7 @@ public class Salary {
 	private Long id;
 
 	@Column(name = "value")
-	private Double value;
+	private Integer value;
 
 	@Column(name = "date")
 	private Date date;
@@ -34,7 +34,7 @@ public class Salary {
 	}
 
 
-	public Salary(Double value, Date date, User user) {
+	public Salary(Integer value, Date date, User user) {
 		this.value = value;
 		this.date = date;
 		this.user = user;
@@ -49,11 +49,11 @@ public class Salary {
 		this.id = id;
 	}
 
-	public Double getValue() {
+	public Integer getValue() {
 		return value;
 	}
 
-	public void setValue(Double value) {
+	public void setValue(Integer value) {
 		this.value = value;
 	}
 
