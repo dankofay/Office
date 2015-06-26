@@ -4,9 +4,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import javax.persistence.NoResultException;
-
 
 import org.springframework.stereotype.Repository;
 
@@ -22,33 +20,32 @@ public class EventDaoImpl extends ElementDAOImpl<Event> implements EventDao {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Event> findEventsByTypeName(String typeName){
-		
-        try {
-           return entityManager.createQuery("From Event e Where e.type.nameType =:typeName2 ")
-        		   .setParameter("typeName2", typeName).getResultList();
-           
-        } catch(NoResultException e) {
-           return new ArrayList<>();
-           }
-        
-		
+	public List<Event> findEventsByTypeName(String typeName) {
+
+		try {
+			return entityManager
+					.createQuery(
+							"From Event e Where e.type.nameType =:typeName2 ")
+					.setParameter("typeName2", typeName).getResultList();
+			
+		} catch (NoResultException e) {
+			return new ArrayList<>();
+		}
 	}
-	
+
 	@SuppressWarnings("unchecked")
-	public List<Event> findEventsByTypePersonl(boolean isPersonal){
-		
-        try {
-           return entityManager.createQuery("From Event e Where e.type.isPersonal =:isPersonal")
-        		   .setParameter("isPersonal", isPersonal).getResultList();
-           
-        } catch(NoResultException e) {
-            return new ArrayList<>();
-            }
-		
-		
-		
-		
+	public List<Event> findEventsByTypePersonl(boolean isPersonal) {
+
+		try {
+			return entityManager
+					.createQuery(
+							"From Event e Where e.type.isPersonal =:isPersonal")
+					.setParameter("isPersonal", isPersonal).getResultList();
+
+		} catch (NoResultException e) {
+			return new ArrayList<>();
+		}
+
 	}
-	
+
 }
