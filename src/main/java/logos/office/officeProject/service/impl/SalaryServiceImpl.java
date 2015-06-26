@@ -48,7 +48,7 @@ public class SalaryServiceImpl implements SalaryService {
 	private RateDAO rateDao;
 
 	private Integer actualHours;
-	private static final Integer workingHours = 160;// static final Integer
+	private static final Integer workingHours = 160;
 
 	@Transactional
 	public List<Salary> findSalaryByUserId(long id) {
@@ -87,13 +87,14 @@ public class SalaryServiceImpl implements SalaryService {
 	public List<SalaryDTO> createSalary(long userId, Date from, Date to) {
 		User user = userDao.getElementByID(userId);
 		List<SalaryDTO> sdtos = new ArrayList<>();
+		actualHours=workingHours;
 		for (Event event : user.getEvents()) {
 
 			if (from.before(event.getSchedule().getDate()) && 
 					to.after(event.getSchedule().getDate())) {
 				//якшо ≥вент персональний ≥ п≥дтверджений ≥ л≥ст ≤вент≥в маЇ €к≥йсь тип ≥венту Personal Break, то значить дн≥ були робоч≥ми
 				if (event.getType().isPersonal()&&event.isConfirmed2()&&event.getType().getEvets().contains("Personal Break")) {
-					actualHours = workingHours - event.getDuration();// Duration в Integer
+					actualHours = actualHours -1;// Duration в Integer
 					Integer rateVal;
 					List<String> roles = new ArrayList<>();
 					for (Role role : user.getRoles()) {
@@ -102,22 +103,16 @@ public class SalaryServiceImpl implements SalaryService {
 						if (rate != null) {
 							rateVal = rate.getValue();
 							for (Salary salary : user.getSalaries()) {
-								Integer salaryVal;
-								Integer salarySum;
-								if (salaryVal != 0) {
-									salaryVal = salary.getValue() * rateVal;
-									salarySum = salaryVal * actualHours;
+								Integer salaryVal= salary.getValue() * rateVal;
+								Integer salarySum= salaryVal * actualHours;
 									sdtos.add(new SalaryDTO((user.getFirstName() + " " + user.getLastName()), salarySum, roles));
 								}
 							}
 						}
 					}
 				}
-
-				return sdtos;
-
-			}
 		}
+				return sdtos;
 	}
 
 	@Transactional
