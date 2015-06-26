@@ -37,6 +37,7 @@ import
 
 org.springframework.stereotype.Service;
 
+///„и в≥рний метод,€к краще написати SalaryDTO, €к створити нормальну ¬ьюшку, шо писати в контролер
 @Service
 public class SalaryServiceImpl implements SalaryService {
 	@Inject
@@ -90,7 +91,8 @@ public class SalaryServiceImpl implements SalaryService {
 
 			if (from.before(event.getSchedule().getDate()) && 
 					to.after(event.getSchedule().getDate())) {
-				if (event.getType().isPersonal()) {
+				//якшо ≥вент персональний ≥ п≥дтверджений ≥ л≥ст ≤вент≥в маЇ €к≥йсь тип ≥венту Personal Break, то значить дн≥ були робоч≥ми
+				if (event.getType().isPersonal()&&event.isConfirmed2()&&event.getType().getEvets().contains("Personal Break")) {
 					actualHours = workingHours - event.getDuration();// Duration в Integer
 					Integer rateVal;
 					List<String> roles = new ArrayList<>();

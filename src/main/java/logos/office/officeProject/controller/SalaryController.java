@@ -1,5 +1,6 @@
 package logos.office.officeProject.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -35,16 +36,28 @@ public class SalaryController {
 		return "salary";
 	}
 
-	@RequestMapping(value = "/find?dateFrom={from}&dateTo={to}&userId={userId}", method = RequestMethod.GET)
+//	@RequestMapping(value = "/find?dateFrom={from}&dateTo={to}&userId={userId}", method = RequestMethod.GET)
+//	// œ≈–≈œ»“¿“»!!!!
+//	public String getSalaryByDuration(Model model,
+//			@PathVariable(value = "userId") long id,
+//			@PathVariable(value = "from") String from,
+//			@PathVariable(value = "to") String to) {
+//		System.err.println(id + " " + from + " " + to);
+//		model.addAttribute("byDuration",
+//				salaryService.findSalaryByUserByTimeDuration(id, from, to));
+//		return "salary";
+//	}
+
 	// œ≈–≈œ»“¿“»!!!!
-	public String getSalaryByDuration(Model model,
-			@PathVariable(value = "userId") long id,
-			@PathVariable(value = "from") String from,
-			@PathVariable(value = "to") String to) {
-		System.err.println(id + " " + from + " " + to);
-		model.addAttribute("byDuration",
-				salaryService.findSalaryByUserByTimeDuration(id, from, to));
-		return "salary";
-	}
-	// /////////////ŸÂ ‰Ó‰‡ÚË ÏÂÚÓ‰Ë
+		@RequestMapping(value = "/create?dateFrom={from}&dateTo={to}&userId={userId}", method = RequestMethod.POST)
+		// œ≈–≈œ»“¿“»!!!!
+		public String createSalary(Model model,
+				@PathVariable(value = "userId") long id,
+				@PathVariable(value = "from") Date from,
+				@PathVariable(value = "to") Date to) {
+			System.err.println(id + " " + from + " " + to);
+			model.addAttribute("CreateSalary",
+					salaryService.createSalary(id, from, to));
+			return "salary";
+		}
 }

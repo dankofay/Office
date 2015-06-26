@@ -8,6 +8,7 @@
 	<tr>
 		<th>User</th>
 		<th>Amount</th>
+		<th>Role</th>
 	</tr>
 	<c:forEach items="${salarysList}" var="salary">
 		<tr>
@@ -33,5 +34,28 @@
 	</div>
 
 	<button type="submit">Find</button>
+
+</form>
+
+
+<form action="salaries/create" method="POST">
+
+	<div>
+		<label for="dateFrom">Month</label> <input id="dateFrom" type="date"
+			name="dateFrom" class="" placeholder="from">
+	</div>
+	<div>
+		<label for="dateTo">Month</label> <input id="dateTo" type="date"
+			name="dateTo" class="" placeholder="to">
+	</div>
+	<div>
+		<label for="userName">User</label> <input id="userName" type="text"
+			name="userName" class="" placeholder="user name">
+	</div>
+     <div>
+		<label for="userRole">Role</label> <input id="role" type="text"
+			name="role" class="" placeholder="role">
+	</div>
+	<button type="submit">Create</button>
 
 </form>

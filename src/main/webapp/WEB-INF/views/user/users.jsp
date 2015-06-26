@@ -27,7 +27,11 @@
 
 	<div>
 		<label for="firstName">Name</label> <input id="firstName" type="text"
-			name="firstName" class="form-control" placeholder="name">
+			name="firstName" class="form-control" placeholder="firstName">
+	</div>
+		<div>
+		<label for="firstName">Name</label> <input id="lastName" type="text"
+			name="lastName" class="form-control" placeholder="lastName">
 	</div>
 	<div>
 		<label for="email">Email</label> <input id="email" type="email"
