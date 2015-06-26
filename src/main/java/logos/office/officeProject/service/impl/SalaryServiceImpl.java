@@ -14,7 +14,6 @@ import
 javax.transaction.Transactional;
 
 import logos.office.officeProject.dao.RateDAO;
-import logos.office.officeProject.dao.RoleDAO;
 import
 
 logos.office.officeProject.dao.SalaryDAO;
