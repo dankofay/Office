@@ -49,15 +49,15 @@ public class SalaryController {
 //	}
 
 	// оепеохрюрх!!!!
-		@RequestMapping(value = "/create?dateFrom={from}&dateTo={to}&userId={userId}", method = RequestMethod.POST)
+		//@RequestMapping(value = "/create?dateFrom={from}&dateTo={to}&userId={userId}", method = RequestMethod.POST)
 		// оепеохрюрх!!!!
-		public String createSalary(Model model,
-				@PathVariable(value = "userId") long id,
-				@PathVariable(value = "from") Date from,
-				@PathVariable(value = "to") Date to) {
-			System.err.println(id + " " + from + " " + to);
-			model.addAttribute("CreateSalary",
-					salaryService.createSalary(id, from, to));
-			return "salary";
-		}
+//		public String createSalary(Model model,
+//				@PathVariable(value = "userId") long id,
+//				@PathVariable(value = "from") Date from,
+//				@PathVariable(value = "to") Date to) {
+//			System.err.println(id + " " + from + " " + to);
+//			model.addAttribute("CreateSalary",
+//					salaryService.createSalary(id, from, to));
+//			return "salary";
+//		}
 }
