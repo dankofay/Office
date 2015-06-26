@@ -36,28 +36,28 @@ public class SalaryController {
 		return "salary";
 	}
 
-//	@RequestMapping(value = "/find?dateFrom={from}&dateTo={to}&userId={userId}", method = RequestMethod.GET)
-//	// оепеохрюрх!!!!
-//	public String getSalaryByDuration(Model model,
-//			@PathVariable(value = "userId") long id,
-//			@PathVariable(value = "from") String from,
-//			@PathVariable(value = "to") String to) {
-//		System.err.println(id + " " + from + " " + to);
-//		model.addAttribute("byDuration",
-//				salaryService.findSalaryByUserByTimeDuration(id, from, to));
-//		return "salary";
-//	}
+	@RequestMapping(value = "/find?dateFrom={from}&dateTo={to}&userId={userId}", method = RequestMethod.GET)
+	// оепеохрюрх!!!!
+	public String getSalaryByDuration(Model model,
+			@PathVariable(value = "userId") long id,
+			@PathVariable(value = "from") String from,
+			@PathVariable(value = "to") String to) {
+		System.err.println(id + " " + from + " " + to);
+		model.addAttribute("byDuration",
+				salaryService.findSalaryByUserByTimeDuration(id, from, to));
+		return "salary";
+	}
 
 	// оепеохрюрх!!!!
-		@RequestMapping(value = "/create?dateFrom={from}&dateTo={to}&userId={userId}", method = RequestMethod.POST)
+		//@RequestMapping(value = "/create?dateFrom={from}&dateTo={to}&userId={userId}", method = RequestMethod.POST)
 		// оепеохрюрх!!!!
-		public String createSalary(Model model,
-				@PathVariable(value = "userId") long id,
-				@PathVariable(value = "from") Date from,
-				@PathVariable(value = "to") Date to) {
-			System.err.println(id + " " + from + " " + to);
-			model.addAttribute("CreateSalary",
-					salaryService.createSalary(id, from, to));
-			return "salary";
-		}
+//		public String createSalary(Model model,
+//				@PathVariable(value = "userId") long id,
+//				@PathVariable(value = "from") Date from,
+//				@PathVariable(value = "to") Date to) {
+//			System.err.println(id + " " + from + " " + to);
+//			model.addAttribute("CreateSalary",
+//					salaryService.createSalary(id, from, to));
+//			return "salary";
+//		}
 }

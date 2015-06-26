@@ -22,7 +22,7 @@ public class Schedule {
 	@Column(name = "id")
 	private Long id;
 
-	@Column(name = "data")
+	@Column(name = "date")
 	private Date date;
 
 	@OneToMany(cascade = { CascadeType.ALL }, fetch = FetchType.LAZY, mappedBy = "schedule")
