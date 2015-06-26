@@ -78,9 +78,10 @@ public class EventServiceImpl implements EventService {
 		Type type = typeDao.getElementByID((long) 1);
 		User user = usSerImpl.getUserInfo(userId);
 		List<User> list = new ArrayList<User>();
+		scheduleDao.addElement(new Schedule(date));;
+		Schedule schedule = scheduleDao.findScheduleByDate(date);
 		list.add(user);
-		eventDao.addElement(new Event(timeFrom, duration, type, new Schedule(
-				date), false, list));
+		eventDao.addElement(new Event(timeFrom, duration, type, schedule, false, list));
 	}
 
 	@Transactional
