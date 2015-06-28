@@ -1,12 +1,9 @@
 package logos.office.officeProject.controller;
 
 import java.util.List;
-
 import javax.inject.Inject;
-
 import logos.office.officeProject.model.Comment;
 import logos.office.officeProject.service.CommentService;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
