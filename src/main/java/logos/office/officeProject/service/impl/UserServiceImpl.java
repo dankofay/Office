@@ -30,7 +30,6 @@ public class UserServiceImpl implements UserService {// по зразку
 		for (User u : userDao.getAllElements()) {
 			if(u.getEmail().equals(email)){
 				id=u.getId();
-				return id;
 			}
 		}
 		return id;	
@@ -41,7 +40,6 @@ public class UserServiceImpl implements UserService {// по зразку
 	@Transactional
 	public List<UserDTO> getAllUsers() {
 		List<UserDTO> dtos = new ArrayList<>();
-
 		for (User user : userDao.getAllElements()) {
 
 			List<String> roles = new ArrayList<>();

@@ -121,14 +121,14 @@ public class EventServiceImpl implements EventService {
 	}
 
 	@Transactional
-	@Override
+
 	public List<Event> findEventsByTypeName(String typeName) {
 
 		return eventDao.findEventsByTypeName(typeName);
 	}
 
 	@Transactional
-	@Override
+
 	public List<Event> getAllEvents() {
 
 		return eventDao.getAllElements();

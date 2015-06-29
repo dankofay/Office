@@ -45,14 +45,30 @@ public class SalaryServiceImpl implements SalaryService {
 	private UserDao userDao;
 	@Inject
 	private RateDAO rateDao;
-
 	private Integer actualHours;
-	private static final Integer workingHours = 160;
+	private static final Integer workingHours = 198;
 
-	@Transactional
-	public List<Salary> findSalaryByUserId(long id) {
+	
+	@Transactional// Пошук зарплати по айди - показує значення зарплати юзера 
+	public List<SalaryDTO> findSalaryByUserId(long id) {
+		List<SalaryDTO> sdtos = new ArrayList<>();
+		User user = userDao.getElementByID(id);
+		Integer rateVal;
+		List<String> roles = new ArrayList<>();
+		for (Role role : user.getRoles()) {
+			roles.add(role.getName());
+			Rate rate = rateDao.findRateByUserRole(role);
+			if (rate != null) {
+				rateVal = rate.getValue();
+				for (Salary salary : user.getSalaries()) {
+					Integer salaryVal = salary.getValue() * rateVal;
+					sdtos.add(new SalaryDTO((user.getFirstName() + " " + user
+							.getLastName()), salaryVal, roles));
+				}
+			}
 
-		return salaryDao.getSalaryByUserId(id);
+		}
+		return sdtos;
 
 	}
 
@@ -95,13 +111,78 @@ public class SalaryServiceImpl implements SalaryService {
 			if (from.before(event.getSchedule().getDate())
 					&& to.after(event.getSchedule().getDate())) {
 				// Якшо івент персональний і підтверджений і ліст Івентів має
-				// якійсь тип івенту Personal Break, то значить дні були
-				// робочіми
+				// якійсь тип івенту Personal Break,то робочий час -1 год
 				if (event.getType().isPersonal()
 						&& event.isConfirmed2()
 						&& event.getType().getEvets()
 								.contains("Personal Break")) {
-					actualHours = actualHours - 1;// Duration в Integer
+					actualHours = actualHours - 1;
+					Integer rateVal;
+					List<String> roles = new ArrayList<>();
+					for (Role role : user.getRoles()) {
+						roles.add(role.getName());
+						Rate rate = rateDao.findRateByUserRole(role);
+						if (rate != null) {
+							rateVal = rate.getValue();
+							for (Salary salary : user.getSalaries()) {
+								Integer salaryVal = salary.getValue() * rateVal;
+								Integer salarySum = salaryVal * actualHours;
+								sdtos.add(new SalaryDTO((user.getFirstName()
+										+ " " + user.getLastName()), salarySum,
+										roles));
+							}
+						}
+					}
+				}
+				// якшо був хворий, то -5 годин від роб часу
+				if (event.getType().isPersonal() && event.isConfirmed2()
+						&& event.getType().getEvets().contains("Sick")) {
+					actualHours = actualHours - 5;
+					Integer rateVal;
+					List<String> roles = new ArrayList<>();
+					for (Role role : user.getRoles()) {
+						roles.add(role.getName());
+						Rate rate = rateDao.findRateByUserRole(role);
+						if (rate != null) {
+							rateVal = rate.getValue();
+							for (Salary salary : user.getSalaries()) {
+								Integer salaryVal = salary.getValue() * rateVal;
+								Integer salarySum = salaryVal * actualHours;
+								sdtos.add(new SalaryDTO((user.getFirstName()
+										+ " " + user.getLastName()), salarySum,
+										roles));
+							}
+						}
+					}
+				}
+				// якшо персональна перерва не підтверджена, то зараховується
+				// прогул, тобто -8 годин
+				if (event.getType().isPersonal()
+						&& event.isConfirmed2() == false) {
+					actualHours = actualHours - 8;
+					Integer rateVal;
+					List<String> roles = new ArrayList<>();
+					for (Role role : user.getRoles()) {
+						roles.add(role.getName());
+						Rate rate = rateDao.findRateByUserRole(role);
+						if (rate != null) {
+							rateVal = rate.getValue();
+							for (Salary salary : user.getSalaries()) {
+								Integer salaryVal = salary.getValue() * rateVal;
+								Integer salarySum = salaryVal * actualHours;
+								sdtos.add(new SalaryDTO((user.getFirstName()
+										+ " " + user.getLastName()), salarySum,
+										roles));
+							}
+						}
+					}
+				}
+
+				// якшо був корпоратив або мітінг, то рахуєм як звичайний
+				// робочій день
+				if (event.getType().isPersonal() && event.isConfirmed2()
+						&& event.getType().getEvets().contains("Meeting")
+						|| event.getType().getEvets().contains("Corporative")) {
 					Integer rateVal;
 					List<String> roles = new ArrayList<>();
 					for (Role role : user.getRoles()) {
@@ -129,4 +210,5 @@ public class SalaryServiceImpl implements SalaryService {
 		return salaryDao.getAllElements();
 
 	}
+
 }

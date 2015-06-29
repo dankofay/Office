@@ -10,8 +10,9 @@ public interface SalaryService {
 
 	List<Salary> getAllSalarys();
 
-	List<Salary> findSalaryByUserId(long id);
-
+	List<SalaryDTO> findSalaryByUserId(long id);
+	
+	//SalaryDTO findSalaryByUserId(long id);
 	List<Salary> findSalaryByUserByTimeDuration(long id, String from, String to);
 
 	List<SalaryDTO> createSalary(long userId, Date from, Date to);
