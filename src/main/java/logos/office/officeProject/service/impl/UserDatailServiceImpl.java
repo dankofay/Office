@@ -34,6 +34,7 @@ public class UserDatailServiceImpl {
 			authorities.add(new SimpleGrantedAuthority(role.getName()));
 		}
 
+		
 		return new User(userEntity.getId().toString(),
 				userEntity.getPassword(), authorities);
 	}

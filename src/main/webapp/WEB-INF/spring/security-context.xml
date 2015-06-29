@@ -15,10 +15,7 @@
 		class="logos.office.officeProject.UserDetailServiceImpl" />
 		
 	<authentication-manager>
-		<authentication-provider>
-			<user-service>
-				<user name="user" password="userpassword" authorities="ROLE_USER" />
-			</user-service>
+		<authentication-provider user-service-ref="userDetailsService">
 		</authentication-provider>
 	</authentication-manager>
 </beans:beans>   
