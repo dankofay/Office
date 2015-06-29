@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import logos.office.officeProject.dto.SalaryDTO;
 import logos.office.officeProject.model.Salary;
 import logos.office.officeProject.service.SalaryService;
 
@@ -30,7 +31,7 @@ public class SalaryController {
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public String getSalaryByUserId(Model model, @PathVariable long id) {
-		List<Salary> salary = salaryService.findSalaryByUserId(id);
+		List<SalaryDTO> salary = salaryService.findSalaryByUserId(id);
 
 		model.addAttribute("SalaryById", salary);
 		return "salary";
