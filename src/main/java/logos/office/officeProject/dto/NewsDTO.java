@@ -1,20 +1,26 @@
 package logos.office.officeProject.dto;
 
 import java.sql.Date;
+import java.util.List;
+
+import logos.office.officeProject.model.Rating;
 
 public class NewsDTO {
 
 	private Date date;
 	private String title;
-	private String comment;
+	private int comment;
 	private double rating;
 	
-	public NewsDTO (Date date, String title, String comment, double rating){
+	public NewsDTO (Date date, String title, int comment, double rating){
 		this.date = date;
 		this.title = title;
 		this.comment = comment;
 		this.rating = rating;
 		
+	}
+
+	public NewsDTO(String title2, int size, List<Rating> rating2) {
 	}
 
 	public Date getDate() {
@@ -33,11 +39,11 @@ public class NewsDTO {
 		this.title = title;
 	}
 
-	public String getComment() {
+	public int getComment() {
 		return comment;
 	}
 
-	public void setComment(String comment) {
+	public void setComment(int comment) {
 		this.comment = comment;
 	}
 

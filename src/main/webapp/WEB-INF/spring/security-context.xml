@@ -11,10 +11,12 @@
 	</http>
 
 	<beans:bean id="userDetailsService"
-		class="logos.office.officeProject.service.impl.UserDatailServiceImpl" />
+		class="logos.office.officeProject.UserDetailServiceImpl" />
 
 	<authentication-manager>
 		<authentication-provider user-service-ref="userDetailsService">
 		</authentication-provider>
 	</authentication-manager>
+	<global-method-security secured-annotations="enabled" />
+	
 </beans:beans>   
