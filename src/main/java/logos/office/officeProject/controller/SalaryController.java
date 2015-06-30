@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import logos.office.officeProject.dto.SalaryDTO;
-import logos.office.officeProject.model.Salary;
+
 import logos.office.officeProject.service.SalaryService;
 
 @Controller

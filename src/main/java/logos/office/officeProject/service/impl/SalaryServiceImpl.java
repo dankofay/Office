@@ -18,24 +18,16 @@ import
 
 logos.office.officeProject.dao.SalaryDAO;
 import logos.office.officeProject.dao.UserDao;
-import
-
-logos.office.officeProject.dto.SalaryDTO;
-import logos.office.officeProject.dto.UserDTO;
+import logos.office.officeProject.dto.SalaryDTO;
 import logos.office.officeProject.model.Event;
 import logos.office.officeProject.model.Rate;
-import
-
-logos.office.officeProject.model.Role;
+import logos.office.officeProject.model.Role;
 import logos.office.officeProject.model.Salary;
-import
-
-logos.office.officeProject.model.User;
+import logos.office.officeProject.model.User;
 import logos.office.officeProject.service.SalaryService;
 
-import
 
-org.springframework.stereotype.Service;
+import org.springframework.stereotype.Service;
 
 ///Чи вірний метод,як краще написати SalaryDTO, як створити нормальну Вьюшку, шо писати в контролер
 @Service
@@ -46,11 +38,12 @@ public class SalaryServiceImpl implements SalaryService {
 	private UserDao userDao;
 	@Inject
 	private RateDAO rateDao;
+	
 	private Integer actualHours;
 	private static final Integer workingHours = 198;
 
-	
-	@Transactional// Пошук зарплати по айди - показує значення зарплати юзера 
+	@Transactional
+	// Пошук зарплати по айди - показує значення зарплати юзера
 	public List<SalaryDTO> findSalaryByUserId(long id) {
 		List<SalaryDTO> sdtos = new ArrayList<>();
 		User user = userDao.getElementByID(id);
@@ -223,6 +216,7 @@ public class SalaryServiceImpl implements SalaryService {
 					if (rate != null) {
 						rateVal = rate.getValue();
 						Integer salaryVal= salary.getValue() * rateVal;
+						
 						sdtos.add(new SalaryDTO((user.getFirstName()
 								+ " " + user.getLastName()),salaryVal,
 								roles));
@@ -234,4 +228,7 @@ public class SalaryServiceImpl implements SalaryService {
 }
 		return sdtos;
 	}
+	//@Transactional
+	//public List<Salary> getAllSalarys() {
+		//return salaryDao.getAllElements();
 }
