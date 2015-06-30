@@ -7,15 +7,15 @@
 	
 	<div>
 	<label for="timeFrom">Time From<input id ="timeFrom" type="time"
-	name="timeFrom" class="" placeholder="HH:MM:SS">
+	name="timeFrom" class="form-control" placeholder="HH:MM:SS">
 	</div>
 	<div>
 	<label for="duration">duration<input id ="duration" type="time"
-	name="duration" class="" placeholder="HH:MM:SS">
+	name="duration" class="form-control" placeholder="HH:MM:SS">
 	</div>
 	<div>
 	<label for="date">date<input id ="date" type="date"
-	name="date" class="" placeholder="DD-MM-YYYY">
+	name="date" class="form-control" placeholder="DD-MM-YYYY">
 	</div>
 	<div>
 	

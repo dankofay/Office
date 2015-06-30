@@ -23,7 +23,7 @@
 	</c:forEach>
 </table>
 
-<form action="users/create" method="POST">
+<form action="users" method="POST">
 
 	<div>
 		<label for="firstName">Name</label> <input id="firstName" type="text"
