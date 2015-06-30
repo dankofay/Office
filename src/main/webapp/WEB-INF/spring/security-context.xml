@@ -17,6 +17,5 @@
 		<authentication-provider user-service-ref="userDetailsService">
 		</authentication-provider>
 	</authentication-manager>
-	<global-method-security secured-annotations="enabled" />
 	
 </beans:beans>   
