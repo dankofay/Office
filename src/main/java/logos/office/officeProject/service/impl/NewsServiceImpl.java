@@ -20,14 +20,14 @@ public class NewsServiceImpl implements NewsService {
 	NewsDAO newsdao;
 
 	@Transactional
-	public List<NewsDTO> getAllNewsByIdUser(Long id) {
+	public List<NewsDTO> getAllNewsByIdUser(Long id_user) {
 		List<NewsDTO> ndto = new ArrayList<>();
 
 		for (News news : newsdao.getAllElements()) {
-			Long ln = news.getUser().getId();
-			
-			if (news.get == id) {
-				NewsDTO dto = new NewsDTO(news.getTitle(), news.getComment().size());
+			Long n = news.getUser().getId();
+			if (news.getId() == id_user) {
+				NewsDTO dto = new NewsDTO(news.getTitle(), news.getComment().size(),
+						news.getRating());
 				
 				for(Rating rating : news.getRating()){
 					
