@@ -8,7 +8,6 @@
 	<http pattern="/css/**" security="none" />
 
 	<http auto-config="true">
-		<intercept-url pattern="/secure/**" access="ROLE_USER" />
 	</http>
 
 	<beans:bean id="userDetailsService"
@@ -18,4 +17,6 @@
 		<authentication-provider user-service-ref="userDetailsService">
 		</authentication-provider>
 	</authentication-manager>
+	<global-method-security secured-annotations="enabled" />
+	
 </beans:beans>   
