@@ -24,7 +24,8 @@ public class UserDatailServiceImpl {
 	@Transactional
 	public UserDetails loadUserByUsername(String email) {
 
-		logos.office.officeProject.model.User userEntity = userDao.findByEmail(email);
+		logos.office.officeProject.model.User userEntity = userDao
+				.findByEmail(email);
 
 		if (userEntity == null)
 			throw new UsernameNotFoundException("Error in email, or password");
@@ -34,9 +35,8 @@ public class UserDatailServiceImpl {
 			authorities.add(new SimpleGrantedAuthority(role.getName()));
 		}
 
-		
 		return new User(userEntity.getId().toString(),
 				userEntity.getPassword(), authorities);
 	}
-	
+
 }

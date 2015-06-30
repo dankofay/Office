@@ -1,7 +1,6 @@
 package logos.office.officeProject.model;
 
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,6 +27,9 @@ public class News {
 
 	@Column(name = "title")
 	private String title;
+	
+	@Column (name = "is_Confirmed")
+	private boolean isConfirmed;
 
 	@ManyToOne(cascade = { CascadeType.REFRESH }, fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_user")
@@ -42,11 +44,12 @@ public class News {
 	public News() {
 	}
 
-	public News(Long id, String content, String title, User user,
+	public News(Long id, String content, String title, boolean isConfirmed, User user,
 			List<Comment> comment, List<Rating> rating) {
 		this.id = id;
 		this.content = content;
 		this.title = title;
+		this.isConfirmed = isConfirmed;
 		this.user = user;
 		this.comment = comment;
 		this.rating = rating;
@@ -74,6 +77,14 @@ public class News {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public boolean isConfirmed() {
+		return isConfirmed;
+	}
+
+	public void setConfirmed(boolean isConfirmed) {
+		this.isConfirmed = isConfirmed;
 	}
 
 	public User getUser() {
@@ -107,6 +118,7 @@ public class News {
 		result = prime * result + ((comment == null) ? 0 : comment.hashCode());
 		result = prime * result + ((content == null) ? 0 : content.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + (isConfirmed ? 1231 : 1237);
 		result = prime * result + ((rating == null) ? 0 : rating.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		result = prime * result + ((user == null) ? 0 : user.hashCode());
@@ -137,6 +149,8 @@ public class News {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
+		if (isConfirmed != other.isConfirmed)
+			return false;
 		if (rating == null) {
 			if (other.rating != null)
 				return false;
@@ -158,7 +172,9 @@ public class News {
 	@Override
 	public String toString() {
 		return "News [id=" + id + ", content=" + content + ", title=" + title
-				+ ", user=" + user + ", comment=" + comment + ", rating="
-				+ rating + "]";
+				+ ", isConfirmed=" + isConfirmed + ", user=" + user
+				+ ", comment=" + comment + ", rating=" + rating + "]";
 	}
+
 }
+

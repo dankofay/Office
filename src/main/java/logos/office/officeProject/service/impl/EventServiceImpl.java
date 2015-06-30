@@ -9,8 +9,6 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 
-import org.springframework.stereotype.Service;
-
 import logos.office.officeProject.dao.EventDao;
 import logos.office.officeProject.dao.ScheduleDao;
 import logos.office.officeProject.dao.TypeDao;
@@ -21,6 +19,9 @@ import logos.office.officeProject.model.Schedule;
 import logos.office.officeProject.model.Type;
 import logos.office.officeProject.model.User;
 import logos.office.officeProject.service.EventService;
+import logos.office.officeProject.service.UserService;
+
+import org.springframework.stereotype.Service;
 
 @Service
 public class EventServiceImpl implements EventService {
@@ -35,9 +36,9 @@ public class EventServiceImpl implements EventService {
 
 	@Inject
 	private UserDao userDao;
-	
+
 	@Inject
-	UserServiceImpl usSerImpl;
+	private UserService userService;
 
 	@Transactional
 	public List<EventDTO> getAllEventsById(Long id_user) {
@@ -54,6 +55,7 @@ public class EventServiceImpl implements EventService {
 				}
 			}
 		}
+
 		return edto;
 
 	}
@@ -63,7 +65,8 @@ public class EventServiceImpl implements EventService {
 	public void saveEvent(Time timeFrom, Time duration, Long typeId, Date date) {
 
 		Type type = typeDao.getElementByID(typeId);
-		scheduleDao.addElement(new Schedule(date));;
+		scheduleDao.addElement(new Schedule(date));
+		;
 		Schedule schedule = scheduleDao.findScheduleByDate(date);
 
 		eventDao.addElement(new Event(timeFrom, duration, type, schedule,
@@ -76,12 +79,12 @@ public class EventServiceImpl implements EventService {
 	public void addPersonalBreak(Time timeFrom, Time duration, Date date,
 			Long userId) {
 		Type type = typeDao.getElementByID((long) 1);
-		User user = usSerImpl.getUserInfo(userId);
+		User user = userService.getUserInfo(userId);
 		List<User> list = new ArrayList<User>();
-		scheduleDao.addElement(new Schedule(date));;
-		Schedule schedule = scheduleDao.findScheduleByDate(date);
+		scheduleDao.addElement(new Schedule(date));
 		list.add(user);
-		eventDao.addElement(new Event(timeFrom, duration, type, schedule, false, list));
+		eventDao.addElement(new Event(timeFrom, duration, type, scheduleDao
+				.findScheduleByDate(date), false, list));
 	}
 
 	@Transactional
@@ -98,13 +101,15 @@ public class EventServiceImpl implements EventService {
 		}
 
 	}
-	
-	@Transactional// додати юзера до події
-	public void addUsersToEvent(Date date, String nameType,Long idUser) {
+
+	@Transactional
+	// додати юзера до події
+	public void addUsersToEvent(Date date, String nameType, Long idUser) {
 		List<User> list = new ArrayList<User>();
 		for (User u : userDao.getAllElements()) {
-			if(u.getId()==idUser){
-			list.add(u);}
+			if (u.getId() == idUser) {
+				list.add(u);
+			}
 		}
 		for (Event ev : eventDao.getAllElements()) {
 			if (ev.getSchedule().getDate().equals(date)
@@ -116,15 +121,14 @@ public class EventServiceImpl implements EventService {
 	}
 
 	@Transactional
-	@Override
+
 	public List<Event> findEventsByTypeName(String typeName) {
 
 		return eventDao.findEventsByTypeName(typeName);
 	}
 
-	
 	@Transactional
-	@Override
+
 	public List<Event> getAllEvents() {
 
 		return eventDao.getAllElements();

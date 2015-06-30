@@ -6,14 +6,14 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
 
 	<http pattern="/css/**" security="none" />
-	
+
 	<http auto-config="true">
 		<intercept-url pattern="/secure/**" access="ROLE_USER" />
-	</http>	
+	</http>
 
 	<beans:bean id="userDetailsService"
 		class="logos.office.officeProject.UserDetailServiceImpl" />
-		
+
 	<authentication-manager>
 		<authentication-provider user-service-ref="userDetailsService">
 		</authentication-provider>

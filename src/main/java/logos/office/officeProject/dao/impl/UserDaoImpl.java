@@ -27,11 +27,13 @@ public class UserDaoImpl extends ElementDAOImpl<User> implements UserDao {
 	}
 
 	@Transactional
-	public User findByName(String first,String last) {
+	public User findByName(String first, String last) {
 		try {
 			return (User) entityManager
-					.createQuery("From user u where u.firstName = :first AND u.lastName =:last")
-					.setParameter("firstName", first).setParameter("lastName", last).getSingleResult();
+					.createQuery(
+							"From user u where u.firstName = :firstName AND u.lastName =:lastName")
+					.setParameter("firstName", first)
+					.setParameter("lastName", last).getSingleResult();
 		} catch (NoResultException e) {
 			return new User();
 		}

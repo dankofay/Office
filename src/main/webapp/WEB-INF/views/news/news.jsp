@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>My event</h1>
+<h1>My news</h1>
 </body>
 </html>

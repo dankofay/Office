@@ -48,8 +48,10 @@ public class UserController {
 
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public String createUser(@RequestParam String email,
-			@RequestParam String first_Name, @RequestParam String last_Name,
-			@RequestParam Integer age, @RequestParam String password) {
+			@RequestParam String first_Name, 
+			@RequestParam String last_Name,
+			@RequestParam Integer age, 
+			@RequestParam String password) {
 		userService.saveUser(first_Name, last_Name, age, email, password);
 
 		return "redirect:/users";

@@ -2,12 +2,9 @@ package logos.office.officeProject.dao.impl;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.NoResultException;
-
 import logos.office.officeProject.dao.CommentDAO;
 import logos.office.officeProject.model.Comment;
-
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
