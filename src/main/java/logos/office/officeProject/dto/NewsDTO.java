@@ -6,11 +6,10 @@ public class NewsDTO {
 
 	private Date date;
 	private String title;
-	private String comment;
+	private int comment;
 	private double rating;
 	
-	public NewsDTO (Date date, String title, String comment, double rating){
-		this.date = date;
+	public NewsDTO (String title, int comment){
 		this.title = title;
 		this.comment = comment;
 		this.rating = rating;
@@ -33,11 +32,11 @@ public class NewsDTO {
 		this.title = title;
 	}
 
-	public String getComment() {
+	public int getComment() {
 		return comment;
 	}
 
-	public void setComment(String comment) {
+	public void setComment(int comment) {
 		this.comment = comment;
 	}
 
