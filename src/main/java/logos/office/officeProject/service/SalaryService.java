@@ -8,7 +8,7 @@ import logos.office.officeProject.model.Salary;
 
 public interface SalaryService {
 
-	List<Salary> getAllSalarys();
+	List<SalaryDTO> getAllSalarys();
 
 	List<SalaryDTO> findSalaryByUserId(long id);
 	

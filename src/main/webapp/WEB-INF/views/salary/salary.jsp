@@ -14,6 +14,7 @@
 		<tr>
 			<td><a>${salary.user.firstName} ${salary.user.lastName }</a></td>
 			<td><a>${salary.value}</a></td>
+		 
 		</tr>
 	</c:forEach>
 </table>
