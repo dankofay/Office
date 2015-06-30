@@ -44,7 +44,7 @@ public class Event {
 	private boolean isConfirmed;
 
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinTable(name = "User_has_Event", joinColumns = { @JoinColumn(name = "id_event", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "id_user", nullable = false, updatable = false) })
+	@JoinTable(name = "user_has_event", joinColumns = { @JoinColumn(name = "id_event", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "id_user", nullable = false, updatable = false) })
 	List<User> users;
 
 	public Event() {
