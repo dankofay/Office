@@ -11,13 +11,12 @@ import logos.office.officeProject.model.Role;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class UserDatailServiceImpl implements UserDetailsService{
+public class UserDatailServiceImpl {
 
 	@Inject
 	private UserDao userDao;
@@ -25,7 +24,8 @@ public class UserDatailServiceImpl implements UserDetailsService{
 	@Transactional
 	public UserDetails loadUserByUsername(String email) {
 
-		logos.office.officeProject.model.User userEntity = userDao.findByEmail(email);
+		logos.office.officeProject.model.User userEntity = userDao
+				.findByEmail(email);
 
 		if (userEntity == null)
 			throw new UsernameNotFoundException("Error in email, or password");
@@ -38,5 +38,5 @@ public class UserDatailServiceImpl implements UserDetailsService{
 		return new User(userEntity.getId().toString(),
 				userEntity.getPassword(), authorities);
 	}
-	
+
 }
