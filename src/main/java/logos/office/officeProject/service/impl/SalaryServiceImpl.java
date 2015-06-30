@@ -21,6 +21,7 @@ import logos.office.officeProject.dao.UserDao;
 import
 
 logos.office.officeProject.dto.SalaryDTO;
+import logos.office.officeProject.dto.UserDTO;
 import logos.office.officeProject.model.Event;
 import logos.office.officeProject.model.Rate;
 import
@@ -206,9 +207,31 @@ public class SalaryServiceImpl implements SalaryService {
 	}
 
 	@Transactional
-	public List<Salary> getAllSalarys() {
-		return salaryDao.getAllElements();
+	public List<SalaryDTO> getAllSalarys() {
+		List<SalaryDTO> sdtos = new ArrayList<>(); 
+		for(Salary salary:salaryDao.getAllElements()){
+			salary.getUser();
+			for (User user : userDao.getAllElements()) {
+
+				List<String> roles = new ArrayList<>();
+				Integer rateVal = 0;
+				for (Role role : user.getRoles()) {
+					roles.add(role.getName());
+
+					Rate rate = rateDao.findRateByUserRole(role);
+
+					if (rate != null) {
+						rateVal = rate.getValue();
+						Integer salaryVal= salary.getValue() * rateVal;
+						sdtos.add(new SalaryDTO((user.getFirstName()
+								+ " " + user.getLastName()),salaryVal,
+								roles));
+					}
+
+				}
 
 	}
-
+}
+		return sdtos;
+	}
 }
