@@ -2,8 +2,10 @@ package logos.office.officeProject.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,20 +26,18 @@ public class Role {
 	@Column(name = "name")
 	private String name;
 
-	@ManyToMany
-	@JoinTable(name = "role_has_user", joinColumns = @JoinColumn(name = "id_role"), 
-	inverseJoinColumns = @JoinColumn(name = "id_user"))
-	List<User> users;
-	
-	@OneToOne(mappedBy = "role" )
-	private Rate rate;///////Перепитати????? звязок onetoone з класом Rate
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinTable(name = "role_has_user", joinColumns = @JoinColumn(name = "id_role"), inverseJoinColumns = @JoinColumn(name = "id_user"))
+	private List<User> users;
+
+	@OneToOne(mappedBy = "role")
+	private Rate rate;// /////Перепитати????? звязок onetoone з класом Rate
 
 	public Role() {
 	}
 
-	public Role( String name) {///Шо передавати в конструктор????
+	public Role(String name) {// /Шо передавати в конструктор????
 
-	
 		this.name = name;
 	}
 

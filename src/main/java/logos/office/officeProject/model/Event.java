@@ -44,23 +44,19 @@ public class Event {
 	private boolean isConfirmed;
 
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinTable(name = "user_has_event", joinColumns = { @JoinColumn(name = "id_event", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "id_user", nullable = false, updatable = false) })
+	@JoinTable(name = "Event_has_User", joinColumns = { @JoinColumn(name = "id_event", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "id_user", nullable = false, updatable = false) })
 	List<User> users;
 
 	public Event() {
-	
+
 	}
 
 	@Override
 	public String toString() {
-		return "timeFrom=" + timeFrom + ", duration=" + duration
-				+ ", type=" + type + ", schedule=" + schedule
-				+ ", isConfirmed=" + isConfirmed + ", users=" + users + "]";
+		return "timeFrom=" + timeFrom + ", duration=" + duration + ", type="
+				+ type + ", schedule=" + schedule + ", isConfirmed="
+				+ isConfirmed + ", users=" + users + "]";
 	}
-
-	
-	
-	
 
 	public Event(Time timeFrom, Time duration, Type type, Schedule schedule,
 			boolean isConfirmed, List<User> users) {
@@ -188,7 +184,5 @@ public class Event {
 			return false;
 		return true;
 	}
-
-	
 
 }

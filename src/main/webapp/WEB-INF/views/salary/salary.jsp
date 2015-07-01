@@ -12,8 +12,8 @@
 	</tr>
 	<c:forEach items="${salarysList}" var="salary">
 		<tr>
-			<td><a>${salary.user.firstName} ${salary.user.lastName }</a></td>
-			<td><a>${salary.value}</a></td>
+			<td><a>${salary.userName}</a></td>
+			<td><a>${salary.salaryValue}</a></td>
 		</tr>
 	</c:forEach>
 </table>

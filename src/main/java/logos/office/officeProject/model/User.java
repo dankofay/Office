@@ -49,11 +49,11 @@ public class User {
 
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(name = "Event_has_User", joinColumns = { @JoinColumn(name = "id_user", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "id_event", nullable = false, updatable = false) })
-	List<Event> events;
+	private List<Event> events;
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name = "Role_has_User", joinColumns = { @JoinColumn(name = "id_user", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "id_role", nullable = false, updatable = false) })
-	List<Role> roles;
+	private List<Role> roles;
 
 	public User() {
 	}

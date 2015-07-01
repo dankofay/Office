@@ -26,7 +26,6 @@ import logos.office.officeProject.model.Salary;
 import logos.office.officeProject.model.User;
 import logos.office.officeProject.service.SalaryService;
 
-
 import org.springframework.stereotype.Service;
 
 ///„и в≥рний метод,€к краще написати SalaryDTO, €к створити нормальну ¬ьюшку, шо писати в контролер
@@ -38,7 +37,7 @@ public class SalaryServiceImpl implements SalaryService {
 	private UserDao userDao;
 	@Inject
 	private RateDAO rateDao;
-	
+
 	private Integer actualHours;
 	private static final Integer workingHours = 198;
 
@@ -201,34 +200,25 @@ public class SalaryServiceImpl implements SalaryService {
 
 	@Transactional
 	public List<SalaryDTO> getAllSalarys() {
-		List<SalaryDTO> sdtos = new ArrayList<>(); 
-		for(Salary salary:salaryDao.getAllElements()){
-			salary.getUser();
-			for (User user : userDao.getAllElements()) {
+		List<SalaryDTO> sdtos = new ArrayList<>();
+		for (Salary salary : salaryDao.getAllElements()) {
+			User user = salary.getUser();
+			List<String> roles = new ArrayList<>();
+			for (Role role : user.getRoles()) {
+				roles.add(role.getName());
+				Rate rate = rateDao.findRateByUserRole(role);
+				if (rate != null) {
+					Integer salaryVal = salary.getValue() * rate.getValue();
 
-				List<String> roles = new ArrayList<>();
-				Integer rateVal = 0;
-				for (Role role : user.getRoles()) {
-					roles.add(role.getName());
-
-					Rate rate = rateDao.findRateByUserRole(role);
-
-					if (rate != null) {
-						rateVal = rate.getValue();
-						Integer salaryVal= salary.getValue() * rateVal;
-						
-						sdtos.add(new SalaryDTO((user.getFirstName()
-								+ " " + user.getLastName()),salaryVal,
-								roles));
-					}
-
+					sdtos.add(new SalaryDTO((user.getFirstName() + " " + user
+							.getLastName()), salaryVal, roles));
 				}
 
-	}
-}
+			}
+		}
 		return sdtos;
 	}
-	//@Transactional
-	//public List<Salary> getAllSalarys() {
-		//return salaryDao.getAllElements();
+	// @Transactional
+	// public List<Salary> getAllSalarys() {
+	// return salaryDao.getAllElements();
 }

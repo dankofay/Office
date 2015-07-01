@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class UserDatailServiceImpl implements UserDetailsService{
+public class UserDetailServiceImpl implements UserDetailsService{
 
 	@Inject
 	private UserDao userDao;

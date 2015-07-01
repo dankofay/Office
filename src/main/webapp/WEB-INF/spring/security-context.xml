@@ -7,15 +7,16 @@
 
 	<http pattern="/css/**" security="none" />
 
-	<http auto-config="true">
+	<http auto-config="true" use-expressions="true">
 	</http>
 
 	<beans:bean id="userDetailsService"
-		class="logos.office.officeProject.UserDetailServiceImpl" />
+		class="logos.office.officeProject.service.impl.UserDetailServiceImpl" />
 
 	<authentication-manager>
 		<authentication-provider user-service-ref="userDetailsService">
 		</authentication-provider>
 	</authentication-manager>
+	<global-method-security secured-annotations="enabled" />
 	
 </beans:beans>   

@@ -1,7 +1,5 @@
 package logos.office.officeProject.dao.impl;
 
-
-
 import javax.persistence.NoResultException;
 
 import logos.office.officeProject.dao.RateDAO;
@@ -21,15 +19,13 @@ public class RateDaoImpl extends ElementDAOImpl<Rate> implements RateDAO {
 	@Transactional
 	public Rate findRateByUserRole(Role role) {
 		try {
-	           return (Rate) entityManager.createQuery("from Rate r  Where r.role =:role").
-	        		   setParameter("role", role).getSingleResult();}///÷è resultlist?
+			return (Rate) entityManager
+					.createQuery("from Rate r  Where r.role =:role")
+					.setParameter("role", role).getSingleResult();
+		}// /÷è resultlist?
 		catch (NoResultException e) {
-			return new Rate();///ÓÂÀÃÀ!!!
+			return null;// /ÓÂÀÃÀ!!!
 		}
-		
-		
 
+	}
 }
-}
-
-	
