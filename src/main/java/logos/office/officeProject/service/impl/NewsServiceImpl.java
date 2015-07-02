@@ -1,13 +1,12 @@
 package logos.office.officeProject.service.impl;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.inject.Inject;
 import javax.transaction.Transactional;
-
 import org.springframework.stereotype.Service;
-
+import logos.office.officeProject.dao.CommentDAO;
 import logos.office.officeProject.dao.NewsDAO;
 import logos.office.officeProject.dto.NewsDTO;
 import logos.office.officeProject.model.News;
@@ -41,7 +40,8 @@ public class NewsServiceImpl implements NewsService {
 	}
 
 	@Transactional
-	public void News() {
+	public void addNews(Date date, String title, int comment, double rating) {
+		Comment comment = commentDAO.
 
 	}
 
