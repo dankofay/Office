@@ -46,6 +46,7 @@ public class SalaryServiceImpl implements SalaryService {
 	public List<SalaryDTO> findSalaryByUserId(long id) {
 		List<SalaryDTO> sdtos = new ArrayList<>();
 		User user = userDao.getElementByID(id);
+		id=user.getId();
 		Integer rateVal;
 		List<String> roles = new ArrayList<>();
 		for (Role role : user.getRoles()) {
