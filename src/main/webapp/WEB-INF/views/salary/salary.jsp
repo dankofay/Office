@@ -14,6 +14,7 @@
 		<tr>
 			<td><a>${salary.userName}</a></td>
 			<td><a>${salary.salaryValue}</a></td>
+			<td><a>${salary.roles}</a></td>
 		</tr>
 	</c:forEach>
 </table>
@@ -52,10 +53,7 @@
 		<label for="userName">User</label> <input id="userName" type="text"
 			name="userName" class="" placeholder="user name">
 	</div>
-     <div>
-		<label for="userRole">Role</label> <input id="role" type="text"
-			name="role" class="" placeholder="role">
-	</div>
+
 	<button type="submit">Create</button>
 
 </form>
