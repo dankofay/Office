@@ -6,36 +6,34 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 
-import org.springframework.stereotype.Service;
-
 import logos.office.officeProject.dao.NewsDAO;
 import logos.office.officeProject.dto.NewsDTO;
 import logos.office.officeProject.model.News;
 import logos.office.officeProject.model.Rating;
 import logos.office.officeProject.service.NewsService;
 
+import org.springframework.stereotype.Service;
+
 @Service
 public class NewsServiceImpl implements NewsService {
 	@Inject
-	NewsDAO newsdao;
+	private NewsDAO newsdao;
 
 	@Transactional
-	public List<NewsDTO> getAllNewsByIdUser(Long id_user) {
+	public List<NewsDTO> getAllNewsByIdUser(Long userId) {
 		List<NewsDTO> ndto = new ArrayList<>();
 
-		for (News news : newsdao.getAllElements()) {
-			Long n = news.getUser().getId();
-			if (news.getId() == id_user) {
-				NewsDTO dto = new NewsDTO(news.getTitle(), news.getComment().size(),
-						news.getRating());
-				
-				for(Rating rating : news.getRating()){
-					
-				}
-				
-				ndto.add(dto);
+		for (News news : newsdao.findNewsByUserId(userId)) {
+
+			NewsDTO dto = new NewsDTO(news.getDate(), news.getTitle(), news
+					.getComment().size());
+
+			for (Rating rating : news.getRating()) {
 
 			}
+
+			ndto.add(dto);
+
 		}
 		return ndto;
 	}

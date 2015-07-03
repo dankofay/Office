@@ -1,6 +1,8 @@
 package logos.office.officeProject.model;
 
+import java.util.Date;
 import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,14 +23,12 @@ public class News {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Long id;
-
 	@Column(name = "content")
 	private String content;
-
 	@Column(name = "title")
 	private String title;
-	
-	@Column (name = "is_Confirmed")
+	private Date date;
+	@Column(name = "is_Confirmed")
 	private boolean isConfirmed;
 
 	@ManyToOne(cascade = { CascadeType.REFRESH }, fetch = FetchType.LAZY)
@@ -44,8 +44,8 @@ public class News {
 	public News() {
 	}
 
-	public News(Long id, String content, String title, boolean isConfirmed, User user,
-			List<Comment> comment, List<Rating> rating) {
+	public News(Long id, String content, String title, boolean isConfirmed,
+			User user, List<Comment> comment, List<Rating> rating) {
 		this.id = id;
 		this.content = content;
 		this.title = title;
@@ -111,62 +111,12 @@ public class News {
 		this.rating = rating;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((comment == null) ? 0 : comment.hashCode());
-		result = prime * result + ((content == null) ? 0 : content.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + (isConfirmed ? 1231 : 1237);
-		result = prime * result + ((rating == null) ? 0 : rating.hashCode());
-		result = prime * result + ((title == null) ? 0 : title.hashCode());
-		result = prime * result + ((user == null) ? 0 : user.hashCode());
-		return result;
+	public Date getDate() {
+		return date;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		News other = (News) obj;
-		if (comment == null) {
-			if (other.comment != null)
-				return false;
-		} else if (!comment.equals(other.comment))
-			return false;
-		if (content == null) {
-			if (other.content != null)
-				return false;
-		} else if (!content.equals(other.content))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (isConfirmed != other.isConfirmed)
-			return false;
-		if (rating == null) {
-			if (other.rating != null)
-				return false;
-		} else if (!rating.equals(other.rating))
-			return false;
-		if (title == null) {
-			if (other.title != null)
-				return false;
-		} else if (!title.equals(other.title))
-			return false;
-		if (user == null) {
-			if (other.user != null)
-				return false;
-		} else if (!user.equals(other.user))
-			return false;
-		return true;
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 	@Override
@@ -177,4 +127,3 @@ public class News {
 	}
 
 }
-
