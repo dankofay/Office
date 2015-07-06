@@ -1,1 +1,3 @@
-INSERT INTO `Type` (`id`,`name_Type`,`is_Personal`) VALUES (2,"Meeting",1),(1,"Personal Break",1),(3,"Corporative",0),(4,"Sick",0);
+INSERT INTO `Type` (`id`,`name_Type`,`is_Personal`) VALUES (2,"Meeting","false"),
+(1,"Personal Break","true"),(3,"Corporative","false"),(4,"Sick","false");
+
