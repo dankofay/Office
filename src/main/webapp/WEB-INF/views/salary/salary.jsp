@@ -4,12 +4,11 @@
 <link href="<c:url value="/resources/css/salary.css" />"
 	rel="stylesheet">
 
-<table>
-	<tr>
-		<th>User</th>
-		<th>Amount</th>
-		<th>Role</th>
-	</tr>
+<table class="table table-striped" style="border: 1px solid black;" cellpadding="6" cellspacing="8">
+  <tr valign="baseline" bgcolor="#404060">
+    <th align="center"> User </th>
+    <th align="left"> Value </th>
+    <th align="right"> Role </th>
 	<c:forEach items="${salarysList}" var="salary">
 		<tr>
 			<td><a>${salary.userName}</a></td>

@@ -41,7 +41,6 @@ public class NewsServiceImpl implements NewsService {
 
 	@Transactional
 	public void addNews(Date date, String title, int comment, double rating) {
-		Comment comment = commentDAO.
 
 	}
 

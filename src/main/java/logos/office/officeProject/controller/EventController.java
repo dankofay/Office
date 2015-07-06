@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import logos.office.officeProject.dto.EventDTO;
-import logos.office.officeProject.dto.SalaryDTO;
-import logos.office.officeProject.model.Event;
+
+
 import logos.office.officeProject.service.EventService;
 
 
