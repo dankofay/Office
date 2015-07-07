@@ -17,6 +17,10 @@
 	rel="stylesheet">
 <script type="text/javascript"
 	src="<c:url value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js" />"></script>
+	<script type="text/javascript"
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script
+	src="<c:url value="https://code.jquery.com/jquery-1.10.2.js" />"></script>
 </head>
 <body>
 	<div class="header">

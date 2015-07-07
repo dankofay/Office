@@ -14,25 +14,13 @@
 			<th align="right">Role</th>
 		</tr>
 	</thead>
+	
 	<tbody id="content">
 	</tbody>
 
 </table>
-
-<table class="table table-striped" style="border: 1px solid black;" cellpadding="6" cellspacing="8">
-  <tr valign="baseline" bgcolor="#404060">
-    <th align="center"> User </th>
-    <th align="left"> Value </th>
-    <th align="right"> Role </th>
-	<c:forEach items="${salarysList}" var="salary">
-		<tr>
-			<td><a>${salary.userName}</a></td>
-			<td><a>${salary.salaryValue}</a></td>
-			<td><a>${salary.roles}</a></td>
-		</tr>
-	</c:forEach>
-</table>
-
+<button id="show-salaries">| SHOW SALARIES |</button>
+<p>_____________</p>
 
 
 <form action="salaries/find" method="get">
@@ -54,7 +42,7 @@
 
 </form>
 
-<button id="show-salaries">show</button>
+
 <div id="salary_create">
 <div>
 		<label for="dateFrom">Month</label> <input id="dateFrom" type="date"
