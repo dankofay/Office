@@ -12,13 +12,13 @@ INSERT INTO `Event` (`id`,`time_from`,`duration`,`type_id`,`schedule_id`,`is_Con
 
 
 
-INSERT INTO `user_has_event` (`id_event`,`id_user`) VALUES (33,53),(53,44),(6,19),(95,53),(2,18),(32,21),(20,42),(78,3),(48,2),(62,29);
-INSERT INTO `user_has_event` (`id_event`,`id_user`) VALUES (86,82),(69,14),(13,27),(6,70),(73,36),(94,100),(55,59),(91,15),(87,22),(62,43);
-INSERT INTO `user_has_event` (`id_event`,`id_user`) VALUES (69,34),(50,12),(94,39),(49,93),(52,67),(62,91),(27,67),(34,67),(89,91),(61,41);
-INSERT INTO `user_has_event` (`id_event`,`id_user`) VALUES (31,58),(26,28),(100,53),(2,100),(66,43),(43,23),(66,25),(8,28),(100,97),(37,64);
-INSERT INTO `user_has_event` (`id_event`,`id_user`) VALUES (31,21),(96,29),(43,63),(16,39),(5,7),(39,73),(93,21),(95,15),(56,19),(83,64);
-INSERT INTO `user_has_event` (`id_event`,`id_user`) VALUES (93,3),(92,82),(86,66),(91,67),(20,19),(35,20),(44,40),(24,27),(19,41),(87,90);
-INSERT INTO `user_has_event` (`id_event`,`id_user`) VALUES (6,74),(49,37),(44,8),(77,75),(27,74),(78,65),(14,50),(42,57),(64,49),(80,92);
-INSERT INTO `user_has_event` (`id_event`,`id_user`) VALUES (47,58),(62,16),(93,68),(40,53),(28,85),(6,68),(56,89),(81,10),(2,38),(34,73);
-INSERT INTO `user_has_event` (`id_event`,`id_user`) VALUES (8,75),(77,18),(29,43),(86,76),(44,40),(26,83),(40,85),(71,76),(22,47),(66,29);
-INSERT INTO `user_has_event` (`id_event`,`id_user`) VALUES (5,25),(70,93),(69,12),(17,7),(90,28),(60,17),(22,52),(85,47),(53,81),(44,83);
+INSERT INTO `event_has_user` (`id_event`,`id_user`) VALUES (33,53),(53,44),(6,19),(95,53),(2,18),(32,21),(20,42),(78,3),(48,2),(62,29);
+INSERT INTO `event_has_user` (`id_event`,`id_user`) VALUES (86,82),(69,14),(13,27),(6,70),(73,36),(94,100),(55,59),(91,15),(87,22),(62,43);
+INSERT INTO `event_has_user` (`id_event`,`id_user`) VALUES (69,34),(50,12),(94,39),(49,93),(52,67),(62,91),(27,67),(34,67),(89,91),(61,41);
+INSERT INTO `event_has_user` (`id_event`,`id_user`) VALUES (31,58),(26,28),(100,53),(2,100),(66,43),(43,23),(66,25),(8,28),(100,97),(37,64);
+INSERT INTO `event_has_user` (`id_event`,`id_user`) VALUES (31,21),(96,29),(43,63),(16,39),(5,7),(39,73),(93,21),(95,15),(56,19),(83,64);
+INSERT INTO `event_has_user`(`id_event`,`id_user`) VALUES (93,3),(92,82),(86,66),(91,67),(20,19),(35,20),(44,40),(24,27),(19,41),(87,90);
+INSERT INTO `event_has_user` (`id_event`,`id_user`) VALUES (6,74),(49,37),(44,8),(77,75),(27,74),(78,65),(14,50),(42,57),(64,49),(80,92);
+INSERT INTO `event_has_user` (`id_event`,`id_user`) VALUES (47,58),(62,16),(93,68),(40,53),(28,85),(6,68),(56,89),(81,10),(2,38),(34,73);
+INSERT INTO `event_has_user` (`id_event`,`id_user`) VALUES (8,75),(77,18),(29,43),(86,76),(44,40),(26,83),(40,85),(71,76),(22,47),(66,29);
+INSERT INTO `event_has_user` (`id_event`,`id_user`) VALUES (5,25),(70,93),(69,12),(17,7),(90,28),(60,17),(22,52),(85,47),(53,81),(44,83);

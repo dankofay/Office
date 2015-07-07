@@ -4,20 +4,24 @@
 <link href="<c:url value="/resources/css/salary.css" />"
 	rel="stylesheet">
 
-<table>
-	<tr>
-		<th>User</th>
-		<th>Amount</th>
-		<th>Role</th>
-	</tr>
-	<c:forEach items="${salarysList}" var="salary">
-		<tr>
-			<td><a>${salary.userName}</a></td>
-			<td><a>${salary.salaryValue}</a></td>
-			<td><a>${salary.roles}</a></td>
+<table id="salaries_table" class="table table-striped"
+	style="border: 1px solid black;">
+
+	<thead>
+		<tr valign="baseline" bgcolor="#404060">
+			<th align="left">User</th>
+			<th align="center">Value</th>
+			<th align="right">Role</th>
 		</tr>
-	</c:forEach>
+	</thead>
+	
+	<tbody id="content">
+	</tbody>
+
 </table>
+<button id="show-salaries">| SHOW SALARIES |</button>
+<p>_____________</p>
+
 
 <form action="salaries/find" method="get">
 
@@ -39,9 +43,8 @@
 </form>
 
 
-<form action="salaries/create" method="POST">
-
-	<div>
+<div id="salary_create">
+<div>
 		<label for="dateFrom">Month</label> <input id="dateFrom" type="date"
 			name="dateFrom" class="" placeholder="from">
 	</div>
@@ -50,10 +53,11 @@
 			name="dateTo" class="" placeholder="to">
 	</div>
 	<div>
-		<label for="userName">User</label> <input id="userName" type="text"
-			name="userName" class="" placeholder="user name">
+		<label for="userId">User</label> <input id="userId" type="number"
+			name="userId" class="form-control" placeholder="1">
 	</div>
 
-	<button type="submit">Create</button>
+	<button id = "create-salary" class= "btn btn-sample">Submit</button>
+	</div>
 
-</form>
+<script src="resources/js/salary.js"></script>

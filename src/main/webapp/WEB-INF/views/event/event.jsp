@@ -27,11 +27,11 @@
 
 		<div>
 			<h2>Add all users to event</h2>
-			<label for="date">date<input id="date" type="date"
+			<label for="date">date</label> <input id="date" type="date"
 				name="date" class="form-control" placeholder="DD-MM-YYYY">
 		</div>
 		<div>
-			<label for="type">type_id<input id="type" type="text"
+			<label for="type">type_id</label> <input id="type" type="text"
 				name="type" class="form-control" placeholder="enter type">
 		</div>
 		<button type="submit">Add all users</button>
@@ -42,44 +42,44 @@
 
 		<h2>Add break</h2>
 		<div>
-			<label for="timeFrom">Time From<input id="timeFrom"
+			<label for="timeFrom">Time From</label> <input id="timeFrom"
 				type="time" name="timeFrom" class="form-control"
 				placeholder="HH:MM:SS">
 		</div>
 		<div>
-			<label for="duration">duration<input id="duration"
+			<label for="duration">duration</label> <input id="duration"
 				type="time" name="duration" class="form-control"
 				placeholder="HH:MM:SS">
 		</div>
 		<div>
-			<label for="date">date<input id="date" type="date"
+			<label for="date">date</label> <input id="date" type="date"
 				name="date" class="form-control" placeholder="DD-MM-YYYY">
 		</div>
 		<div>
 
 			<jsp:include page="AddAllUsersToEvent.jsp"></jsp:include>
-
+</div>
 			<button type="submit">Add Break</button>
 	</form>
 
 	<form action="event" method="POST">
 		<h2>Create event</h2>
 		<div>
-			<label for="timeFrom">Time From<input id="timeFrom"
+			<label for="timeFrom">Time From</label> <input id="timeFrom"
 				type="time" name="timeFrom" class="form-control"
 				placeholder="HH:MM:SS">
 		</div>
 		<div>
-			<label for="duration">duration<input id="duration"
+			<label for="duration">duration</label> <input id="duration"
 				type="time" name="duration" class="form-control"
 				placeholder="HH:MM:SS">
 		</div>
 		<div>
-			<label for="date">date<input id="date" type="date"
+			<label for="date">date</label> <input id="date" type="date"
 				name="date" class="form-control" placeholder="DD-MM-YYYY">
 		</div>
 		<div>
-			<label for="type_id">type_id<input id="type_id" type="number"
+			<label for="type_id">type_id</label> <input id="type_id" type="number"
 				name="type_id" class="form-control" placeholder="number">
 		</div>
 		<button type="submit">Create</button>
