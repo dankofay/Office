@@ -1,19 +1,22 @@
 package logos.office.officeProject.controller;
 
 
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
 
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import logos.office.officeProject.dto.SalaryDTO;
-
 import logos.office.officeProject.service.SalaryService;
 
 @Controller
@@ -21,7 +24,6 @@ import logos.office.officeProject.service.SalaryService;
 public class SalaryController {
 	@Inject
 	private SalaryService salaryService;
-
 	@RequestMapping()
 	public ModelAndView getSalarys(ModelAndView model) {
 		model.addObject("salarysList", salaryService.getAllSalarys());
@@ -50,15 +52,25 @@ public class SalaryController {
 	}
 
 	// оепеохрюрх!!!!
-		//@RequestMapping(value = "/create?dateFrom={from}&dateTo={to}&userId={userId}", method = RequestMethod.POST)
-		// оепеохрюрх!!!!
-//		public String createSalary(Model model,
-//				@PathVariable(value = "userId") long id,
-//				@PathVariable(value = "from") Date from,
-//				@PathVariable(value = "to") Date to) {
-//			System.err.println(id + " " + from + " " + to);
-//			model.addAttribute("CreateSalary",
-//					salaryService.createSalary(id, from, to));
-//			return "salary";
-//		}
-}
+		@RequestMapping(value = "/create?dateFrom={from}&dateTo={to}&userId={userId}", method = RequestMethod.POST)
+	//	 оепеохрюрх!!!!
+		public String createSalary(Model model,
+				@PathVariable(value = "userId") long id,
+				@PathVariable(value = "from") Date from,
+				@PathVariable(value = "to") Date to) {
+			System.err.println(id + " " + from + " " + to);
+			model.addAttribute("createSalary",
+					salaryService.createSalary(id, from, to));
+			return "salary";
+		}
+		
+		@RequestMapping(value = "/show", method = RequestMethod.GET)
+		public @ResponseBody List<SalaryDTO> showSalaries() {
+
+			List<SalaryDTO> salaries = salaryService.getAllSalarys();
+
+			return salaries;
+		}
+		
+	
+		}
