@@ -7,6 +7,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.http.MediaType;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -63,7 +64,7 @@ public class SalaryController {
 					salaryService.createSalary(id, from, to));
 			return "salary";
 		}
-		
+	
 		@RequestMapping(value = "/show", method = RequestMethod.GET)
 		public @ResponseBody List<SalaryDTO> showSalaries() {
 

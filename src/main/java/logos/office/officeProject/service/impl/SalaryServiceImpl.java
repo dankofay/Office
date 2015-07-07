@@ -26,6 +26,7 @@ import logos.office.officeProject.model.Salary;
 import logos.office.officeProject.model.User;
 import logos.office.officeProject.service.SalaryService;
 
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 
 ///„и в≥рний метод,€к краще написати SalaryDTO, €к створити нормальну ¬ьюшку, шо писати в контролер
@@ -198,7 +199,7 @@ public class SalaryServiceImpl implements SalaryService {
 		}
 		return sdtos;
 	}
-
+	//@Secured("Accauntant")
 	@Transactional
 	public List<SalaryDTO> getAllSalarys() {
 		List<SalaryDTO> sdtos = new ArrayList<>();
