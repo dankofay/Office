@@ -43,7 +43,7 @@ public class SalaryServiceImpl implements SalaryService {
 
 	@Transactional
 	// Пошук зарплати по айди - показує значення зарплати юзера
-	public List<SalaryDTO> findSalaryByUserId(long id) {
+	public List<SalaryDTO> findSalaryByUserId(Long id) {
 		List<SalaryDTO> sdtos = new ArrayList<>();
 		User user = userDao.getElementByID(id);
 		id=user.getId();
@@ -67,7 +67,7 @@ public class SalaryServiceImpl implements SalaryService {
 	}
 
 	@Transactional
-	public List<Salary> findSalaryByUserByTimeDuration(long id, String from,
+	public List<Salary> findSalaryByUserByTimeDuration(Long id, String from,
 
 	String to) {
 
@@ -96,7 +96,7 @@ public class SalaryServiceImpl implements SalaryService {
 	// к-ть годин.берем його роль, дивимся на рейтинг,
 	// значення рейтинга множимо на значення зарплати(залежно від реальновідпрац
 	// годин), передаєм це все SalaryDTO.
-	public List<SalaryDTO> createSalary(long userId, Date from, Date to) {
+	public List<SalaryDTO> createSalary(Long userId, Date from, Date to) {
 		User user = userDao.getElementByID(userId);
 		List<SalaryDTO> sdtos = new ArrayList<>();
 		actualHours = workingHours;
