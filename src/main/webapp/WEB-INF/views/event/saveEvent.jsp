@@ -4,8 +4,8 @@
 <link href="<c:url value="/resources/css/event.css" />"
 	rel="stylesheet">
 	<form action="event" method="POST">
-	<h2>Create event</h2>
-	<div>
+	<h1><tt>Create event</tt></h1>
+	<div >
 	<label for="timeFrom">Time From<input id ="timeFrom" type="time"
 	name="timeFrom" class="form-control" placeholder="HH:MM:SS">
 	</div>

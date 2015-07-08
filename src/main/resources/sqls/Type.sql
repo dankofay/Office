@@ -1,10 +1,4 @@
-INSERT INTO `Type` (`id`,`name_Type`,`is_Personal`) VALUES (1,"Personal Break",0),(2,"Sick",0),(3,"Corporative",0),(4,"Meeting",1),(5,"Meeting",0),(6,"Sick",0),(7,"Corporative",0),(8,"Personal Break",0),(9,"Meeting",0),(10,"Meeting",1);
-INSERT INTO `Type` (`id`,`name_Type`,`is_Personal`) VALUES (11,"Meeting",0),(12,"Meeting",0),(13,"Personal Break",0),(14,"Sick",0),(15,"Corporative",1),(16,"Sick",1),(17,"Meeting",0),(18,"Personal Break",0),(19,"Sick",1),(20,"Personal Break",1);
-INSERT INTO `Type` (`id`,`name_Type`,`is_Personal`) VALUES (21,"Meeting",0),(22,"Meeting",1),(23,"Meeting",1),(24,"Meeting",0),(25,"Meeting",0),(26,"Personal Break",0),(27,"Sick",0),(28,"Sick",1),(29,"Personal Break",1),(30,"Corporative",1);
-INSERT INTO `Type` (`id`,`name_Type`,`is_Personal`) VALUES (31,"Meeting",1),(32,"Personal Break",0),(33,"Meeting",0),(34,"Corporative",0),(35,"Corporative",0),(36,"Personal Break",0),(37,"Meeting",0),(38,"Personal Break",1),(39,"Sick",1),(40,"Sick",1);
-INSERT INTO `Type` (`id`,`name_Type`,`is_Personal`) VALUES (41,"Personal Break",0),(42,"Meeting",1),(43,"Personal Break",0),(44,"Sick",0),(45,"Personal Break",1),(46,"Corporative",0),(47,"Corporative",1),(48,"Corporative",1),(49,"Personal Break",0),(50,"Sick",0);
-INSERT INTO `Type` (`id`,`name_Type`,`is_Personal`) VALUES (51,"Personal Break",1),(52,"Corporative",0),(53,"Corporative",1),(54,"Personal Break",0),(55,"Sick",1),(56,"Meeting",0),(57,"Personal Break",0),(58,"Sick",0),(59,"Corporative",1),(60,"Meeting",0);
-INSERT INTO `Type` (`id`,`name_Type`,`is_Personal`) VALUES (61,"Personal Break",1),(62,"Corporative",1),(63,"Meeting",0),(64,"Sick",0),(65,"Meeting",1),(66,"Personal Break",1),(67,"Sick",1),(68,"Sick",1),(69,"Corporative",1),(70,"Meeting",1);
-INSERT INTO `Type` (`id`,`name_Type`,`is_Personal`) VALUES (71,"Meeting",1),(72,"Sick",1),(73,"Corporative",0),(74,"Meeting",0),(75,"Corporative",0),(76,"Personal Break",0),(77,"Sick",1),(78,"Sick",0),(79,"Sick",0),(80,"Sick",1);
-INSERT INTO `Type` (`id`,`name_Type`,`is_Personal`) VALUES (81,"Sick",1),(82,"Corporative",0),(83,"Personal Break",0),(84,"Sick",1),(85,"Corporative",1),(86,"Sick",1),(87,"Meeting",1),(88,"Corporative",0),(89,"Personal Break",1),(90,"Corporative",1);
-INSERT INTO `Type` (`id`,`name_Type`,`is_Personal`) VALUES (91,"Personal Break",0),(92,"Corporative",1),(93,"Corporative",0),(94,"Meeting",1),(95,"Meeting",0),(96,"Personal Break",0),(97,"Meeting",1),(98,"Corporative",1),(99,"Corporative",0),(100,"Corporative",1);
+INSERT INTO `office`.`type` (`id`, `is_Personal`, `name_Type`) VALUES ('1', 1, 'Personal Break');
+INSERT INTO `office`.`type` (`id`, `is_Personal`, `name_Type`) VALUES ('2', 0, 'Sick');
+INSERT INTO `office`.`type` (`id`, `is_Personal`, `name_Type`) VALUES ('3', 0, 'Corporative');
+INSERT INTO `office`.`type` (`id`, `is_Personal`, `name_Type`) VALUES ('4', 0, 'Meeting');
