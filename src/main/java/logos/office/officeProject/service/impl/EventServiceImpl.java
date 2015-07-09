@@ -51,7 +51,7 @@ public class EventServiceImpl implements EventService {
 				if (i.getId() == id_user) {
 					edto.add(new EventDTO(ek.getType().getNameType(), ek
 							.getSchedule().getDate(), ek.getTimeFrom(), ek
-							.getDuration(), ek.isConfirmed2()));
+							.getDuration(), ek.getIsConfirmed()));
 				}
 			}
 		}

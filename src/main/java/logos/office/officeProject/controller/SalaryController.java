@@ -1,10 +1,10 @@
 package logos.office.officeProject.controller;
 
-
 import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.http.MediaType;
 import org.springframework.security.access.annotation.Secured;
@@ -25,6 +25,7 @@ import logos.office.officeProject.service.SalaryService;
 public class SalaryController {
 	@Inject
 	private SalaryService salaryService;
+
 	@RequestMapping()
 	public ModelAndView getSalarys(ModelAndView model) {
 		model.addObject("salarysList", salaryService.getAllSalarys());
@@ -40,38 +41,37 @@ public class SalaryController {
 		return "salary";
 	}
 
-	@RequestMapping(value = "/find?dateFrom={from}&dateTo={to}&userId={userId}", method = RequestMethod.GET)
-	// оепеохрюрх!!!!
-	public String getSalaryByDuration(Model model,
-			@PathVariable(value = "userId") long id,
-			@PathVariable(value = "from") String from,
-			@PathVariable(value = "to") String to) {
-		System.err.println(id + " " + from + " " + to);
+	@RequestMapping(value = "/find", method = RequestMethod.GET)
+	public String getSalaryByDuration(Model model, HttpServletRequest request) {
+		long id = Long.parseLong(request.getParameter("userId"));
+		String from = request.getParameter("dateFrom");
+		String to = request.getParameter("dateTo");
 		model.addAttribute("byDuration",
 				salaryService.findSalaryByUserByTimeDuration(id, from, to));
+		
+		System.out.println(salaryService.findSalaryByUserByTimeDuration(id, from, to).size());
 		return "salary";
 	}
 
 	// оепеохрюрх!!!!
-		@RequestMapping(value = "/create?dateFrom={from}&dateTo={to}&userId={userId}", method = RequestMethod.POST)
-	//	 оепеохрюрх!!!!
-		public String createSalary(Model model,
-				@PathVariable(value = "userId") long id,
-				@PathVariable(value = "from") Date from,
-				@PathVariable(value = "to") Date to) {
-			System.err.println(id + " " + from + " " + to);
-			model.addAttribute("createSalary",
-					salaryService.createSalary(id, from, to));
-			return "salary";
-		}
-	
-		@RequestMapping(value = "/show", method = RequestMethod.GET)
-		public @ResponseBody List<SalaryDTO> showSalaries() {
+	@RequestMapping(value = "/create?dateFrom={from}&dateTo={to}&userId={userId}", method = RequestMethod.POST)
+	// оепеохрюрх!!!!
+	public String createSalary(Model model,
+			@PathVariable(value = "userId") long id,
+			@PathVariable(value = "from") Date from,
+			@PathVariable(value = "to") Date to) {
+		System.err.println(id + " " + from + " " + to);
+		model.addAttribute("createSalary",
+				salaryService.createSalary(id, from, to));
+		return "salary";
+	}
 
-			List<SalaryDTO> salaries = salaryService.getAllSalarys();
+	@RequestMapping(value = "/show", method = RequestMethod.GET)
+	public @ResponseBody List<SalaryDTO> showSalaries() {
 
-			return salaries;
-		}
-		
-	
-		}
+		List<SalaryDTO> salaries = salaryService.getAllSalarys();
+
+		return salaries;
+	}
+
+}
