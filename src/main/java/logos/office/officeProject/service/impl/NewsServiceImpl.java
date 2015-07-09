@@ -45,16 +45,16 @@ public class NewsServiceImpl implements NewsService {
 		return ndto;
 	}
 
-	@Transactional
-	public void addNews(Date date, String title, int comment, double rating) {
-		Comment comment1 = commentdao.getElementByID(commentId);
-        Rating rating1 = ratingdao.getElementByID(ratingId);
-        
-		newsdao.addElement(new News(date, comment, title, rating,
-        		 user, new ArrayList<Rating>(), new ArrayList<Comment>()));
-		
-
-	}
+//	@Transactional
+//	public void addNews(Date date, String title, int comment, double rating) {
+//		Comment comment1 = commentdao.getElementByID(commentId);
+//        Rating rating1 = ratingdao.getElementByID(ratingId);
+//        
+//		newsdao.addElement(new News(date, comment, title, rating,
+//        		 user, new ArrayList<Rating>(), new ArrayList<Comment>()));
+//		
+//
+//	}
 
 	
 	

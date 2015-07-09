@@ -1,0 +1,1 @@
+$('#show-news').click(show);
