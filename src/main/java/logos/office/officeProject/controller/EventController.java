@@ -40,19 +40,33 @@ public class EventController {
 		model.addAttribute("eventById", event);
 		return "event";
 	}
-//	@RequestMapping(value="{/create?timeFrom={from}&duration={duration}&date={date}&typeId={typeID}",method = RequestMethod.POST)
-//	public String getEventsByTypeName(Model model, @PathVariable(value ="from") Time from,
-//			@PathVariable(value ="duration") Time duration,
-//			@PathVariable(value ="date") Date date,
-//			@PathVariable(value ="typeID") Long typeId){
-//		System.out.println(from +" "+duration+" "+date+" "+ typeId);
-//		model.addAttribute("saveEvent", eventService.saveEvent(from, duration, typeId, date) );
-//		return "event";
-//	}
+	@RequestMapping(value="{/create?timeFrom={from}&duration={duration}&date={date}&type_id={typeID}",method = RequestMethod.POST)
+public String createEvent(Model model, @PathVariable(value ="from") Time from,
+			@PathVariable(value ="duration") Time duration,
+			@PathVariable(value ="date") Date date,
+			@PathVariable(value ="typeID") Long typeId){
+		System.out.println(from +" "+duration+" "+date+" "+ typeId);
+		model.addAttribute("saveEvent", eventService.saveEvent(from, duration, typeId, date) );
+		return "event";
+	}
 	
-	
+	@RequestMapping(value="{/create?date={date}&type={type}",method = RequestMethod.POST)
+	public String addAllUsersToEvent(Model model,
+				@PathVariable(value ="date") Date date,
+				@PathVariable(value ="type") String type){
+			System.out.println(date+" "+ type);
+			model.addAttribute("AddAllUsersEvent", eventService.addAllUsersToEvent(date, type ));
+			return "event";
+		}
 		
-	
+//	@RequestMapping(value="{/create?timeFrom={from}&duration={duration}&date={date}&user",method = RequestMethod.POST)
+//	public String addPersonalBreak(Model model, @PathVariable(value ="from") Time from,
+//				@PathVariable(value ="duration") Time duration,
+//				@PathVariable(value ="date") Date date){
+//			System.out.println(from +" "+duration+" "+date);
+//			model.addAttribute("saveEvent", eventService.addPersonalBreak((from, duration,date,userId) );
+//			return "event";
+//		}
 	
 	
 	
