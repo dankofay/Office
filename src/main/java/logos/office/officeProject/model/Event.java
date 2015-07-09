@@ -41,7 +41,7 @@ public class Event {
 	private Schedule schedule;
 
 	@Column(name = "is_Confirmed")
-	private boolean isConfirmed;
+	private Boolean isConfirmed;
 
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(name = "Event_has_User", joinColumns = { @JoinColumn(name = "id_event", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "id_user", nullable = false, updatable = false) })
@@ -59,7 +59,7 @@ public class Event {
 	}
 
 	public Event(Time timeFrom, Time duration, Type type, Schedule schedule,
-			boolean isConfirmed, List<User> users) {
+			Boolean isConfirmed, List<User> users) {
 		this.timeFrom = timeFrom;
 		this.duration = duration;
 		this.type = type;
@@ -108,11 +108,11 @@ public class Event {
 		this.schedule = schedule;
 	}
 
-	public boolean isConfirmed2() {
+	public Boolean getIsConfirmed() {
 		return isConfirmed;
 	}
 
-	public void setConfirmed2(boolean isConfirmed) {
+	public void setIsConfirmed(Boolean isConfirmed) {
 		this.isConfirmed = isConfirmed;
 	}
 

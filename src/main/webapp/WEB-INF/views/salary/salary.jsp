@@ -14,16 +14,21 @@
 			<th align="right">Role</th>
 		</tr>
 	</thead>
-	
+
 	<tbody id="content">
 	</tbody>
 
 </table>
 <button id="show-salaries">| SHOW SALARIES |</button>
 <p>_____________</p>
+<c:forEach items="${ byDuration}" var="sal">
 
+${sal.id }
+${sal.value }
+${sal.date }
+</c:forEach>
 
-<form action="salaries/find" method="get">
+<form action="salary/find" method="get">
 
 	<div>
 		<label for="dateFrom">Month</label> <input id="dateFrom" type="date"
@@ -44,7 +49,7 @@
 
 
 <div id="salary_create">
-<div>
+	<div>
 		<label for="dateFrom">Month</label> <input id="dateFrom" type="date"
 			name="dateFrom" class="" placeholder="from">
 	</div>
@@ -57,7 +62,7 @@
 			name="userId" class="form-control" placeholder="1">
 	</div>
 
-	<button id = "create-salary" class= "btn btn-sample">Submit</button>
-	</div>
+	<button id="create-salary" class="btn btn-sample">Submit</button>
+</div>
 
 <script src="resources/js/salary.js"></script>

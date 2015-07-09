@@ -46,7 +46,7 @@ public String createEvent(Model model, @PathVariable(value ="from") Time from,
 			@PathVariable(value ="date") Date date,
 			@PathVariable(value ="typeID") Long typeId){
 		System.out.println(from +" "+duration+" "+date+" "+ typeId);
-		model.addAttribute("saveEvent", eventService.saveEvent(from, duration, typeId, date) );
+		eventService.saveEvent(from, duration, typeId, date);
 		return "event";
 	}
 	
@@ -55,7 +55,7 @@ public String createEvent(Model model, @PathVariable(value ="from") Time from,
 				@PathVariable(value ="date") Date date,
 				@PathVariable(value ="type") String type){
 			System.out.println(date+" "+ type);
-			model.addAttribute("AddAllUsersEvent", eventService.addAllUsersToEvent(date, type ));
+			eventService.addAllUsersToEvent(date, type );
 			return "event";
 		}
 		

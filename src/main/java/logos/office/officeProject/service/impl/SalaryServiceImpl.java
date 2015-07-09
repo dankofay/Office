@@ -108,7 +108,7 @@ public class SalaryServiceImpl implements SalaryService {
 				// якшо ≥вент персональний ≥ п≥дтверджений ≥ л≥ст ≤вент≥в маЇ
 				// €к≥йсь тип ≥венту Personal Break,то робочий час -1 год
 				if (event.getType().isPersonal()
-						&& event.isConfirmed2()
+						&& event.getIsConfirmed()
 						&& event.getType().getEvets()
 								.contains("Personal Break")) {
 					actualHours = actualHours - 1;
@@ -130,7 +130,7 @@ public class SalaryServiceImpl implements SalaryService {
 					}
 				}
 				// €кшо був хворий, то -5 годин в≥д роб часу
-				if (event.getType().isPersonal() && event.isConfirmed2()
+				if (event.getType().isPersonal() && event.getIsConfirmed()
 						&& event.getType().getEvets().contains("Sick")) {
 					actualHours = actualHours - 5;
 					Integer rateVal;
@@ -153,7 +153,7 @@ public class SalaryServiceImpl implements SalaryService {
 				// €кшо персональна перерва не п≥дтверджена, то зараховуЇтьс€
 				// прогул, тобто -8 годин
 				if (event.getType().isPersonal()
-						&& event.isConfirmed2() == false) {
+						&& event.getIsConfirmed() == false) {
 					actualHours = actualHours - 8;
 					Integer rateVal;
 					List<String> roles = new ArrayList<>();
@@ -175,7 +175,7 @@ public class SalaryServiceImpl implements SalaryService {
 
 				// €кшо був корпоратив або м≥т≥нг, то рахуЇм €к звичайний
 				// робоч≥й день
-				if (event.getType().isPersonal() && event.isConfirmed2()
+				if (event.getType().isPersonal() && event.getIsConfirmed()
 						&& event.getType().getEvets().contains("Meeting")
 						|| event.getType().getEvets().contains("Corporative")) {
 					Integer rateVal;

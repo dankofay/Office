@@ -22,7 +22,7 @@
 			<property name="hibernate.hbm2ddl.auto" value="create" />
 			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
 			<property name="hibernate.connection.username" value="root" />
-			<property name="hibernate.connection.password" value="1234" />
+			<property name="hibernate.connection.password" value="" />
 			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/office" />
 			<property name="hibernate.hbm2ddl.import_files"
 				value="sqls/Users.sql, sqls/Comment.sql, sqls/Schedule.sql, sqls/Type.sql,sqls/Event.sql,sqls/News.sql,sqls/Rating.sql,sqls/Role.sql, sqls/Salary.sql, sqls/Rate.sql" />
