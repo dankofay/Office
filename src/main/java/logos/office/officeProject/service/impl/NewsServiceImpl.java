@@ -1,9 +1,11 @@
 package logos.office.officeProject.service.impl;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
+import javax.xml.stream.events.Comment;
 import logos.office.officeProject.dao.CommentDAO;
 import logos.office.officeProject.dao.NewsDAO;
 import logos.office.officeProject.dao.RatingDAO;
@@ -44,18 +46,20 @@ public class NewsServiceImpl implements NewsService {
 	}
 
 
-//	@Transactional
-//	public void addNews(Date date, String title, int comment, double rating) {
-//		Comment comment1 = commentdao.getElementByID(commentId);
-//        Rating rating1 = ratingdao.getElementByID(ratingId);
-//        
-//		newsdao.addElement(new News(date, comment, title, rating,
-//        		 user, new ArrayList<Rating>(), new ArrayList<Comment>()));
-//		
-//
-//	}
+	@Transactional
+	public void addNews(Date date, String title, int comment, double rating) {
+		Comment comment1 = commentdao.getElementByID(commentId);
+        Rating rating1 = ratingdao.getElementByID(ratingId);
+        
+		newsdao.addElement(new News(date, comment, title, rating,
+        		 user, new ArrayList<Rating>(), new ArrayList<Comment>()));
 	
+	}
 	
+	@Transactional
+	public void deleteNews(Date date, String title, int comment, double rating){
+		
+	}
 	
 	
 	
