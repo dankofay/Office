@@ -8,5 +8,6 @@
 		<li><a href="users">Users</a></li>
 	<li><a href="salary">Salary</a></li>
 	<li><a href="event">Event</a></li>
+	<li><a href="news">News</a></li>
 	</ul>
 </div>
