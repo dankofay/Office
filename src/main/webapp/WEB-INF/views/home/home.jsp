@@ -6,7 +6,7 @@
 <body>
 	<h1>Welcome to Office</h1>
 <h2>WORK HARD!!! </h2>
-	<h3>Edit by Ivan,Pavlo,Vitliy,Victor and double Bogdan)</h3>
+	<h3>Edit by Ivan,Pavlo,Vitaliy,Victor,Bogdan)</h3>
 
 </body>
 </html>
