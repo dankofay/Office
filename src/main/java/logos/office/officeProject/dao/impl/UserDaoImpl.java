@@ -1,11 +1,10 @@
 package logos.office.officeProject.dao.impl;
 
 import javax.persistence.NoResultException;
-
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
 import logos.office.officeProject.dao.UserDao;
+import logos.office.officeProject.model.News;
 import logos.office.officeProject.model.User;
 
 @Repository
@@ -37,6 +36,11 @@ public class UserDaoImpl extends ElementDAOImpl<User> implements UserDao {
 		} catch (NoResultException e) {
 			return new User();
 		}
+	}
+
+	@Override
+	public void addElement(News news) {
+		
 	}
 
 }
