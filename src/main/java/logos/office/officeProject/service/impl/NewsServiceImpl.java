@@ -4,10 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
-
 import javax.inject.Inject;
 import javax.transaction.Transactional;
-
 import logos.office.officeProject.dao.NewsDAO;
 import logos.office.officeProject.dao.UserDao;
 import logos.office.officeProject.dto.NewsDTO;
@@ -46,9 +44,11 @@ public class NewsServiceImpl implements NewsService {
 				
 //			RatingDTO rdto - new RatingDTO(news.getRating());  ???
 				
+						
 			}
 
 			ndto.add(dto);
+
 		}
 		return ndto;
 	} 
