@@ -2,6 +2,7 @@ package logos.office.officeProject.model;
 
 import java.util.Date;
 import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,7 +23,7 @@ public class News {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Long id;
-	@Column (name = "date")
+	@Column(name = "date")
 	private Date date;
 	@Column(name = "content")
 	private String content;
@@ -44,8 +45,9 @@ public class News {
 	public News() {
 	}
 
-	public News(Long id, Date date, String content, String title, boolean isConfirmed,
-			User user, List<Comment> comment, List<Rating> rating) {
+	public News(Long id, Date date, String content, String title,
+			boolean isConfirmed, User user, List<Comment> comment,
+			List<Rating> rating) {
 		this.id = id;
 		this.date = date;
 		this.content = content;
@@ -54,6 +56,15 @@ public class News {
 		this.user = user;
 		this.comment = comment;
 		this.rating = rating;
+	}
+
+	public News(Date date, String content, String title, User user) {
+		super();
+		this.date = date;
+		this.content = content;
+		this.title = title;
+		this.user = user;
+		this.isConfirmed = false;
 	}
 
 	@Override
