@@ -9,6 +9,6 @@ public interface NewsService {
 
 	List <News> findNewsByUserEmail (String email);
 	List<News> getAllNews();
-	void saveNews(Date date, String title, int comment, double rating);
+	void addNews(Date date, String title, String content, long userId);
 	
 }
